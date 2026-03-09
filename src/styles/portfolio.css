@@ -266,7 +266,7 @@ body {
 
 .about-title {
   font-family: Impact, 'Arial Narrow', Arial, sans-serif;
-  font-size: 40px;
+  font-size: 80px;
   margin-bottom: 10px;
   font-weight: 900;
   text-transform: uppercase;
@@ -291,11 +291,6 @@ body {
   width: 200px;
   height: auto;
   border-radius: 24px;
-}
-
-.about-heart-icon {
-  font-size: 48px;
-  margin-left: 20px;
 }
 
 .about-hero-text {
@@ -520,9 +515,8 @@ body {
   align-items: center;
   justify-content: space-between;
   background: white;
-  border: 3px solid black;
   border-radius: 64px;
-  padding: 60px;
+  padding: 40px;
   min-height: 520px;
   flex-shrink: 0;
   scroll-snap-align: center;
@@ -564,8 +558,8 @@ body {
 
 .project-card-image {
   flex-shrink: 0;
-  width: 450px;
-  height: 320px;
+  width: 900px;
+  height: 600px;
   background: #eee;
   border-radius: 32px;
   overflow: hidden;
@@ -581,8 +575,19 @@ body {
    OTHER WORKS (Explore) SECTION
    ============================================ */
 .other-works {
-  padding: 100px 0 160px;
+  position: relative;
+  height: 400vh; /* 스크롤 길이를 제공하여 가로 이동 거리를 확보 */
   background-color: #93cbd8;
+}
+
+.explor-sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .other-works-title {
@@ -617,10 +622,9 @@ body {
 
 .other-works-item {
   flex-shrink: 0;
-  width: 480px;
-  height: 340px;
+  width: 600px;
+  height: 400px;
   background: white;
-  border: 3px solid black;
   border-radius: 48px;
   overflow: hidden;
   padding: 24px;
@@ -650,7 +654,6 @@ body {
 
 .footer-cta-card {
   background: white;
-  border: 3px solid black;
   border-radius: 80px;
   padding: 80px;
   text-align: center;
@@ -780,7 +783,7 @@ body {
   .skill-pill       { font-size: 16px; padding: 10px 14px; }
   .projects-header  { padding: 0 24px; }
   .projects-title   { font-size: 48px; }
-  .project-card     { flex-direction: column; padding: 40px; border-radius: 40px; }
+  .project-card     { flex-direction: column; padding: 10px; border-radius: 40px; }
   .project-card-image { width: 100%; height: 240px; margin-top: 32px; }
   .footer-cta-card  { padding: 40px; border-radius: 40px; }
   .footer-cta-title { font-size: 32px; }

@@ -106,10 +106,9 @@ function About() {
               alt="Park Soobin" 
               className="about-avatar-img" 
             />
-            <span className="about-heart-icon">✨</span>
           </div>
           <h1 className="about-hero-text">
-            빠른 이해! 신속 작업! 하는 <span className="about-highlight">quick<span className="about-red">lee</span>박수빈</span> 입니다.
+            빠른 이해! 신속 작업! 하는<br /> <span className="about-highlight">quick<span className="about-red">lee</span>박수빈</span> 입니다.
           </h1>
         </div>
 
@@ -118,10 +117,11 @@ function About() {
           <div className="about-info-column">
             <h3 className="about-column-title">Introduce</h3>
             <ul className="about-info-list">
-              <li><span>이름</span> 박수빈</li>
-              <li><span>나이</span> 2001.04.25 (24세)</li>
-              <li><span>연락처</span> 010-9417-1874</li>
-              <li><span>이메일</span> s00bpark425@gmail.com</li>
+              <li><span>Name</span> 박수빈</li>
+              <li><span>Age</span> 2001.04.25 (24세)</li>
+              <li><span>Address</span> 서울시 동작구 거주</li>
+              <li><span>Phone</span> 010-9417-1874</li>
+              <li><span>E-mail</span> s00bpark425@gmail.com</li>
             </ul>
           </div>
 
@@ -168,9 +168,9 @@ function About() {
 const certs = [
   {
     id: 1,
-    name: 'Google UX Design: Specialization',
-    row1: ['Design Thinking', 'User Interface Design', 'Prototyping', 'User Experience (UX)'],
-    row2: ['UX Research', 'Usability Testing', 'Responsive Web Design', 'Visual Design'],
+    name: '자격증',
+    row1: ['운전면허증', '포토샵 1급', '일러스트 1급'],
+    row2: [],
   },
   {
     id: 2,
@@ -335,18 +335,19 @@ function ExploreSection() {
       if (isDragging.current) return;
 
       const rect = section.getBoundingClientRect();
-      const sectionH = section.offsetHeight;
       const viewH = window.innerHeight;
 
       if (rect.bottom < 0 || rect.top > viewH) return;
 
-      const scrollable = sectionH - viewH;
-      let progress = scrollable > 0 ? (-rect.top) / scrollable : 0;
-      progress = Math.max(0, Math.min(1, progress));
-
       const wrapper = track.parentElement;
       const maxTranslate = track.scrollWidth - wrapper.offsetWidth;
       if (maxTranslate <= 0) return;
+
+      // 섹션의 전체 높이에서 뷰포트 높이를 뺀 만큼이 실제 스크롤 거리
+      const scrollDistance = section.offsetHeight - viewH;
+      // 섹션이 상단(top: 0)에 도달한 시점부터 진행률 계산
+      let progress = -rect.top / scrollDistance;
+      progress = Math.max(0, Math.min(1, progress));
 
       const tx = -(progress * maxTranslate);
       track.style.transition = 'none';
@@ -403,17 +404,19 @@ function ExploreSection() {
 
   return (
     <section className="other-works" id="other-works" ref={sectionRef}>
-      <h2 className="other-works-title">My Other Works!</h2>
-      <div className="explor-component">
-        <div className="other-card-wrap">
-          <div className="other-card-track" ref={trackRef}>
-            {otherWorksItems.map((item) => (
-              <div className="other-works-item" key={item.id}>
-                <div className="other-works-item-inner">
-                  <img src={item.image} alt={item.label} />
+      <div className="explor-sticky-wrapper">
+        <h2 className="other-works-title">My Other Works!</h2>
+        <div className="explor-component">
+          <div className="other-card-wrap">
+            <div className="other-card-track" ref={trackRef}>
+              {otherWorksItems.map((item) => (
+                <div className="other-works-item" key={item.id}>
+                  <div className="other-works-item-inner">
+                    <img src={item.image} alt={item.label} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

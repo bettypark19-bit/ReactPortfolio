@@ -1,11 +1,15 @@
 import { useEffect, useRef } from 'react';
 import '../styles/portfolio.css';
 
-import personPhoto from 'figma:asset/c759566774071b028aa620da656708bed20fab29.png';
-import covivantImg from 'figma:asset/62dd12decc4f5023eff12e04d3cee579db1b3502.png';
-import asesmeImg from 'figma:asset/a3f1b387717376f84400c4aaf63f6048abba092e.png';
-import btwAcademyImg from 'figma:asset/0d9c91a8e1289901eb5d85bb4de9ea15032454ef.png';
-import otherWorksImg from 'figma:asset/98d77422494ae79776d23ba548b394a837c8b947.png';
+/* =======================================================
+   이미지 경로 — public/images/ 폴더 참조
+   GitHub 푸시 후에도 깨지지 않습니다.
+   ======================================================= */
+var personPhoto    = '/images/person.png';
+var covivantImg    = '/images/covivant.png';
+var asesmeImg      = '/images/asesme.png';
+var btwAcademyImg  = '/images/btw-academy.png';
+var otherWorksImg  = '/images/other-works.png';
 
 /* =======================================================
    NAVBAR  — 화면 가운데 하단에 고정 (div.navbar15_component)

@@ -5,11 +5,22 @@ import '../styles/portfolio.css';
    이미지 경로 — public/images/ 폴더 참조
    GitHub 푸시 후에도 깨지지 않습니다.
    ======================================================= */
-var personPhoto    = '/images/person.png';
-var covivantImg    = '/images/covivant.png';
-var asesmeImg      = '/images/asesme.png';
-var btwAcademyImg  = '/images/btw-academy.png';
-var otherWorksImg  = '/images/other-works.png';
+var personPhoto = '/images/person.png';
+
+// Projects 카드 (3장) — project-1.png ~ project-3.png
+var projectImgs = [
+  '/images/project-1.png',
+  '/images/project-2.png',
+  '/images/project-3.png',
+];
+
+// Other Works 카드 (4장) — other-works-1.png ~ other-works-4.png
+var otherWorksImgs = [
+  '/images/other-works-1.png',
+  '/images/other-works-2.png',
+  '/images/other-works-3.png',
+  '/images/other-works-4.png',
+];
 
 /* =======================================================
    NAVBAR  — 화면 가운데 하단에 고정 (div.navbar15_component)
@@ -177,7 +188,7 @@ var projects = [
     title: 'Roommate Finding App | Mobile App Design | UI/UX',
     tags: ['Mobile App', 'Case Study', 'UI/UX Design'],
     desc: 'Covivant is a roommate finder app designed to make the process of finding a compatible and trustworthy roommate easier, safer, and more social.',
-    image: covivantImg,
+    image: projectImgs[0],
     alt: 'Covivant Project',
   },
   {
@@ -185,7 +196,7 @@ var projects = [
     title: 'AsesMe',
     tags: ['Landing Page', 'Web Design', 'UI/UX Design', 'Design System'],
     desc: 'A solution for conducting assessments & competency tests independently with a format that is transparent, accurate and easily accessible.',
-    image: asesmeImg,
+    image: projectImgs[1],
     alt: 'AsesMe Project',
   },
   {
@@ -193,7 +204,7 @@ var projects = [
     title: 'BTW Academy',
     tags: ['Landing Page', 'Web Design', 'UI/UX Design', 'Design System'],
     desc: "BTW Academy is a tutoring center that prepares students for entrance exams and interviews at Indonesia's top State Universities and Service Academies.",
-    image: btwAcademyImg,
+    image: projectImgs[2],
     alt: 'BTW Academy Project',
   },
 ];
@@ -278,10 +289,10 @@ function Projects() {
    — Swiper 기능 (터치/마우스 드래그) + 스크롤 연동 자동 이동
    ======================================================= */
 var otherWorksItems = [
-  { id: 1, image: otherWorksImg, label: 'Stock Market App' },
-  { id: 2, image: otherWorksImg, label: 'UI Exploration'   },
-  { id: 3, image: otherWorksImg, label: 'Brand Design'     },
-  { id: 4, image: otherWorksImg, label: 'Web Design'       },
+  { id: 1, image: otherWorksImgs[0], label: 'Stock Market App' },
+  { id: 2, image: otherWorksImgs[1], label: 'UI Exploration'   },
+  { id: 3, image: otherWorksImgs[2], label: 'Brand Design'     },
+  { id: 4, image: otherWorksImgs[3], label: 'Web Design'       },
 ];
 
 function ExploreSection() {

@@ -78,7 +78,7 @@ function Hero() {
       <div className="hero-image-area">
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <div className="hero-chat-bubble">
-            <span className="hero-chat-text">Hi! I'm Juli!</span>
+            <span className="hero-chat-text">Hi! I'm Soobin!</span>
           </div>
           <img
             className="hero-person-photo"
@@ -92,38 +92,71 @@ function Hero() {
 }
 
 /* =======================================================
-   ABOUT ME / EXPERIENCE SECTION
+   ABOUT ME SECTION
    ======================================================= */
-const experiences = [
-  { id: 1, company: 'Fiverr',        role: 'Freelance Graphic Designer', years: '2018 - Present'   },
-  { id: 2, company: 'Moonstone Co',  role: 'Font Designer',              years: '2020 - 2022'      },
-  { id: 3, company: 'BTW Edutech',   role: 'UI/UX Designer',             years: 'Jul 2023 - Jul 2024' },
-];
-
 function About() {
   return (
     <section className="about" id="about">
-      <div className="about-header">
-        <h2 className="about-section-title">{'About me\n/Experience'}</h2>
-        <div className="about-info">
-          <div className="about-name">
-            <span className="about-name-kr">박수빈</span>
-            <span className="about-name-en">Park Soobin</span>
+      <div className="about-inner">
+        <h2 className="about-title">About Me</h2>
+        <div className="about-hero">
+          <div className="about-avatar-group">
+            <img 
+              src={personPhoto} 
+              alt="Park Soobin" 
+              className="about-avatar-img" 
+            />
+            <span className="about-heart-icon">✨</span>
           </div>
-          <p className="about-bio">
-            Hey there! I'm a product designer living it up in Bali. I focus on UI/UX
-            design, responsive web design, and visual development.
-          </p>
+          <h1 className="about-hero-text">
+            빠른 이해! 신속 작업! 하는 <span className="about-highlight">quick<span className="about-red">lee</span>박수빈</span> 입니다.
+          </h1>
         </div>
-      </div>
-      <div className="about-cards">
-        {experiences.map((exp) => (
-          <div className="exp-card" key={exp.id}>
-            <div className="exp-card-company">{exp.company}</div>
-            <div className="exp-card-role">{exp.role}</div>
-            <div className="exp-card-years">{exp.years}</div>
+
+        <div className="about-info-grid">
+          {/* Introduce */}
+          <div className="about-info-column">
+            <h3 className="about-column-title">Introduce</h3>
+            <ul className="about-info-list">
+              <li><span>이름</span> 박수빈</li>
+              <li><span>나이</span> 2001.04.25 (24세)</li>
+              <li><span>연락처</span> 010-9417-1874</li>
+              <li><span>이메일</span> s00bpark425@gmail.com</li>
+            </ul>
           </div>
-        ))}
+
+          {/* Personalities */}
+          <div className="about-info-column">
+            <h3 className="about-column-title">Personalities</h3>
+            <div className="about-tag-container">
+              <span className="about-tag">#긍정적인</span>
+              <span className="about-tag">#손빠른</span>
+              <span className="about-tag">#계획적인</span>
+              <span className="about-tag">#INFJ</span>
+              <span className="about-tag">#웃음많은</span>
+              <span className="about-tag">#다재다능</span>
+            </div>
+          </div>
+
+          {/* Education */}
+          <div className="about-info-column">
+            <h3 className="about-column-title">Education</h3>
+            <ul className="about-edu-list">
+              <li>
+                <span className="about-edu-year">2026.04</span>
+                <p>MBC 아카데미 챗GPT 생성형 AI를 활용한 반응형 웹콘텐츠 개발기획자 양성과정 수료</p>
+              </li>
+              <li>
+                <span className="about-edu-year">2026.02</span>
+                <p>국민대학교 금속공예학과 졸업</p>
+              </li>
+              <li>
+                <span className="about-edu-year">2025.06</span>
+                <p>서울중부기술교육원 컴퓨터그래픽디자인실무자양성과정 수료</p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );

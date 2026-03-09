@@ -1,0 +1,10 @@
+/* theme.css — Tailwind @apply 구문 제거, 순수 CSS 변수만 유지 */
+
+:root {
+  --font-size: 16px;
+  --radius: 0.625rem;
+}
+
+html {
+  font-size: var(--font-size);
+}

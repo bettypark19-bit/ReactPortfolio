@@ -1,0 +1,840 @@
+/* ============================================
+   PORTFOLIO CSS — Pure CSS, No Tailwind
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background-color: #93cbd8;
+  color: #100a27;
+  overflow-x: hidden;
+}
+
+.portfolio-root {
+  min-height: 100vh;
+  background-color: #93cbd8;
+}
+
+/* ============================================
+   NAVBAR — div.navbar15_component
+   화면 가운데 하단에 고정
+   ============================================ */
+.navbar {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 128px;
+  padding: 12px 32px 12px 20px;
+  min-height: 72px;
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #018abe, #93cbd8);
+  border-radius: 50%;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar-link {
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #100a27;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.navbar-link:hover {
+  opacity: 0.7;
+}
+
+.navbar-connect-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 8px 32px 16px;
+  border-radius: 1600px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #d6e7ee 5.6%, #014478 105.61%);
+  color: white;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow: inset 0px -7px 0px rgba(255, 197, 214, 0.42);
+  transition: opacity 0.2s;
+}
+
+.navbar-connect-btn:hover {
+  opacity: 0.9;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #018abe 0%, #93cbd8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.hero-text-content {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 96px;
+  z-index: 10;
+}
+
+.hero-location {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 22px;
+}
+
+.hero-location-icon {
+  font-size: 24px;
+}
+
+.hero-role {
+  color: white;
+  font-size: 22px;
+}
+
+/* Marquee */
+.hero-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+}
+
+.hero-marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.hero-marquee-track span {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 120px;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: -2px;
+  padding-right: 40px;
+  opacity: 0.18;
+}
+
+.hero-marquee-track-reverse {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-scroll-reverse 28s linear infinite;
+}
+
+.hero-marquee-track-reverse span {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 120px;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: -2px;
+  padding-right: 40px;
+  opacity: 0.12;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.hero-image-area {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+  margin-top: 120px;
+}
+
+.hero-person-photo {
+  height: 620px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+}
+
+.hero-chat-bubble {
+  position: absolute;
+  background: white;
+  border-radius: 64px;
+  padding: 16px 28px;
+  bottom: 380px;
+  right: -80px;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-chat-text {
+  font-size: 22px;
+  background: linear-gradient(180deg, #018abe, #93cbd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+}
+
+.hero-logo-decoration {
+  position: absolute;
+  z-index: 3;
+}
+
+.hero-logo-decoration.left {
+  left: 5%;
+  bottom: 55%;
+}
+
+.hero-logo-decoration.right {
+  right: 10%;
+  bottom: 38%;
+}
+
+.hero-logo-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+}
+
+.hero-logo-circle.blue {
+  background: linear-gradient(180deg, #3ebdc6, #146ef5);
+  border: 8px solid rgba(164, 205, 255, 0.5);
+  opacity: 0.85;
+}
+
+.hero-logo-circle.pink {
+  background: linear-gradient(180deg, #3741ff, #ff0049);
+  border: 8px solid rgba(164, 205, 255, 0.5);
+  opacity: 0.85;
+}
+
+/* ============================================
+   ABOUT ME SECTION
+   ============================================ */
+.about {
+  background: white;
+  padding: 112px 96px;
+}
+
+.about-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.about-section-title {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #100a27;
+  line-height: 1.15;
+  white-space: pre-line;
+  flex-shrink: 0;
+}
+
+.about-info {
+  flex: 1;
+}
+
+.about-name {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.about-name-kr {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 56px;
+  font-weight: 800;
+  color: black;
+  line-height: 1.15;
+}
+
+.about-name-en {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #100a27;
+}
+
+.about-bio {
+  font-size: 22px;
+  color: #100a27;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.about-cards {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.about-cards::-webkit-scrollbar { height: 4px; }
+.about-cards::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 2px; }
+.about-cards::-webkit-scrollbar-thumb { background: #93cbd8; border-radius: 2px; }
+
+.exp-card {
+  background: white;
+  border: 3px solid black;
+  border-radius: 32px;
+  width: 320px;
+  min-height: 280px;
+  flex-shrink: 0;
+  padding: 35px;
+  position: relative;
+}
+
+.exp-card-company {
+  font-size: 26px;
+  font-weight: 700;
+  color: #100a27;
+  margin-bottom: 6px;
+}
+
+.exp-card-role {
+  font-size: 15px;
+  color: #100a27;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.exp-card-years {
+  font-size: 15px;
+  color: #100a27;
+  font-weight: 400;
+  margin-top: 4px;
+  opacity: 0.6;
+}
+
+/* ============================================
+   CERTIFICATION / SKILLS — section#skills
+   border-radius: 96px
+   ============================================ */
+.skills {
+  background: #f0f4f6;
+  border-radius: 96px;
+  padding: 80px 0;
+  margin: 0 0;
+  overflow: hidden;
+}
+
+.skills-title {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #100a27;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.cert-block {
+  margin-bottom: 60px;
+}
+
+.cert-block:last-child {
+  margin-bottom: 0;
+}
+
+.cert-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #100a27;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.skills-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 0 96px;
+  margin-bottom: 14px;
+}
+
+.skill-pill {
+  border: 1px solid rgba(16, 10, 39, 0.85);
+  border-radius: 1584px;
+  padding: 14px 20px;
+  font-size: 20px;
+  color: rgba(16, 10, 39, 0.85);
+  white-space: nowrap;
+  background: transparent;
+  font-family: 'Instrument Sans', sans-serif;
+}
+
+/* ============================================
+   PROJECTS / CASE STUDIES
+   — 세로 스크롤 + scroll-snap-type: y
+   — 가운데 카드 opacity 100%, 위아래 잘리는 카드 opacity 50%
+   ============================================ */
+.projects {
+  background: #93cbd8;
+  padding: 112px 0 112px;
+}
+
+.projects-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding: 0 96px;
+}
+
+.projects-title {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  line-height: 1.15;
+}
+
+.projects-see-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Instrument Sans', sans-serif;
+  padding: 8px 0;
+  transition: opacity 0.2s;
+}
+
+.projects-see-all:hover {
+  opacity: 0.7;
+}
+
+/* ── 세로 스크롤 컨테이너 ── */
+.project-cards-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  /* 고정 높이 + 세로 스크롤 */
+  height: 78vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* 첫/마지막 카드도 세로 중앙에 스냅될 수 있도록 상하 패딩 */
+  padding: calc((78vh - 420px) / 2) 96px;
+  scroll-padding-top: calc((78vh - 420px) / 2);
+}
+
+.project-cards-scroll::-webkit-scrollbar { width: 4px; }
+.project-cards-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); border-radius: 2px; }
+.project-cards-scroll::-webkit-scrollbar-thumb { background: white; border-radius: 2px; }
+
+/* ── 개별 프로젝트 카드 ── */
+.project-card {
+  background: white;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  /* 세로 스크롤: 너비 100%, 고정 높이 */
+  width: 100%;
+  flex-shrink: 0;
+  height: 420px;
+  scroll-snap-align: center;
+  opacity: 0.5;
+  transform: scale(0.97);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.project-card-text {
+  padding: 48px;
+  flex: 0 0 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.project-card-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #100a27;
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.project-tag {
+  border: 1px solid rgba(16, 10, 39, 0.12);
+  border-radius: 1584px;
+  padding: 5px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(16, 10, 39, 0.5);
+  text-transform: uppercase;
+  font-family: 'Instrument Sans', sans-serif;
+  background: white;
+}
+
+.project-card-desc {
+  font-size: 16px;
+  color: #100a27;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.project-card-image {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 28px;
+  margin: 20px 20px 20px 0;
+  position: relative;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================
+   EXPLORE / OTHER WORKS
+   — div.explor_component
+   — 하단 스크롤 시 카드가 오른쪽→왼쪽으로 이동
+   ============================================ */
+.other-works {
+  /* 세로로 충분히 길게 → sticky가 긴 시간 유지 */
+  min-height: 260vh;
+  background: #100a27;
+  padding-top: 0;
+  position: relative;
+}
+
+.other-works-title {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  padding-top: 80px;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* div.explor_component */
+.explor-component {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* OtherCardWrap */
+.other-card-wrap {
+  overflow: hidden;
+  width: 100%;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.other-card-wrap:active {
+  cursor: grabbing;
+}
+
+/* 카드 트랙 — JS가 translateX로 이동 */
+.other-card-track {
+  display: flex;
+  gap: 32px;
+  transform: translateX(0px);
+  will-change: transform;
+  padding: 20px 96px;
+}
+
+.other-works-item {
+  flex-shrink: 0;
+  width: 520px;
+}
+
+.other-works-item-inner {
+  background: #1e1e2e;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.other-works-item-inner img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  border-radius: 28px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: #93cbd8;
+  padding: 80px 96px 100px;
+}
+
+.footer-cta-card {
+  background: white;
+  border-radius: 32px;
+  padding: 48px;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.footer-cta-title {
+  font-size: 42px;
+  font-weight: 400;
+  color: #100a27;
+  line-height: 1.2;
+  max-width: 52%;
+  font-family: 'Instrument Sans', sans-serif;
+  margin-bottom: 36px;
+}
+
+.footer-start-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 8px 32px 16px;
+  border-radius: 1600px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #d6e7ee 5.6%, #014478 105.61%);
+  color: white;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow: inset 0px -7px 0px rgba(255, 197, 214, 0.42);
+  transition: opacity 0.2s;
+  margin-bottom: 32px;
+}
+
+.footer-start-btn:hover {
+  opacity: 0.9;
+}
+
+.footer-collab-banner {
+  background: #93cbd8;
+  border-radius: 28px;
+  padding: 36px;
+  margin-bottom: 0;
+}
+
+.footer-collab-text {
+  font-size: 36px;
+  color: white;
+  line-height: 1.25;
+  font-family: 'Instrument Sans', sans-serif;
+}
+
+.footer-contact-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 36px;
+}
+
+.footer-contact-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #100a27;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.footer-contact-email {
+  font-size: 28px;
+  font-weight: 600;
+  color: #100a27;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.footer-contact-email:hover { opacity: 0.7; }
+
+.footer-socials-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #100a27;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.footer-socials-list {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-social-link {
+  font-size: 28px;
+  font-weight: 600;
+  color: #100a27;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: lowercase;
+  transition: opacity 0.2s;
+}
+
+.footer-social-link:hover { opacity: 0.6; }
+
+.footer-copyright {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 60px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1200px) {
+  .about            { padding: 80px 48px; }
+  .projects-header  { padding: 0 48px; }
+  .project-cards-scroll { padding: calc((78vh - 420px) / 2) 48px; }
+  .footer           { padding: 60px 48px 100px; }
+  .about-header     { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .about-section-title { font-size: 60px; }
+  .projects-title   { font-size: 60px; }
+  .other-card-track { padding: 20px 48px; }
+}
+
+@media (max-width: 900px) {
+  .navbar           { padding: 10px 16px 10px 12px; gap: 8px; bottom: 16px; }
+  .navbar-links     { display: none; }
+  .hero-marquee-track span,
+  .hero-marquee-track-reverse span { font-size: 72px; }
+  .hero-person-photo { height: 400px; }
+  .hero-text-content { padding: 0 24px; }
+  .about            { padding: 60px 24px; }
+  .about-section-title { font-size: 44px; }
+  .about-name-kr    { font-size: 40px; }
+  .skills           { border-radius: 48px; }
+  .skills-title     { font-size: 48px; }
+  .skills-row       { padding: 0 24px; }
+  .skill-pill       { font-size: 16px; padding: 10px 14px; }
+  .projects-header  { padding: 0 24px; }
+  .projects-title   { font-size: 44px; }
+  .project-cards-scroll {
+    height: 72vh;
+    padding: calc((72vh - 360px) / 2) 24px;
+    scroll-padding-top: calc((72vh - 360px) / 2);
+  }
+  .project-card     { height: 360px; flex-direction: column; }
+  .project-card-text { padding: 24px; flex: none; height: 50%; }
+  .project-card-image { height: 50%; margin: 0 16px 16px; }
+  .other-works-title { font-size: 52px; }
+  .other-works-item { width: 300px; }
+  .other-card-track { padding: 16px 24px; gap: 20px; }
+  .other-works-item-inner img { height: 220px; }
+  .footer           { padding: 48px 24px 100px; }
+  .footer-cta-title { font-size: 26px; max-width: 100%; }
+  .footer-collab-text { font-size: 22px; }
+  .footer-contact-email { font-size: 18px; }
+  .footer-social-link { font-size: 18px; }
+}

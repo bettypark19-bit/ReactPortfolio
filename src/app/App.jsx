@@ -3,19 +3,16 @@ import '../styles/portfolio.css';
 
 /* =======================================================
    이미지 경로 — public/images/ 폴더 참조
-   GitHub 푸시 후에도 깨지지 않습니다.
    ======================================================= */
-var personPhoto = '/images/person.png';
+const personPhoto = '/images/person.png';
 
-// Projects 카드 (3장) — project-1.png ~ project-3.png
-var projectImgs = [
+const projectImgs = [
   '/images/project-1.png',
   '/images/project-2.png',
   '/images/project-3.png',
 ];
 
-// Other Works 카드 (4장) — other-works-1.png ~ other-works-4.png
-var otherWorksImgs = [
+const otherWorksImgs = [
   '/images/other-works-1.png',
   '/images/other-works-2.png',
   '/images/other-works-3.png',
@@ -23,7 +20,7 @@ var otherWorksImgs = [
 ];
 
 /* =======================================================
-   NAVBAR  — 화면 가운데 하단에 고정 (div.navbar15_component)
+   NAVBAR
    ======================================================= */
 function Navbar() {
   return (
@@ -43,7 +40,7 @@ function Navbar() {
 /* =======================================================
    HERO SECTION
    ======================================================= */
-var MARQUEE_TEXT = 'BUILDING DIGITAL PRODUCTS, BRANDS, AND EXPERIENCE. ';
+const MARQUEE_TEXT = 'BUILDING DIGITAL PRODUCTS, BRANDS, AND EXPERIENCE. ';
 
 function Hero() {
   return (
@@ -97,7 +94,7 @@ function Hero() {
 /* =======================================================
    ABOUT ME / EXPERIENCE SECTION
    ======================================================= */
-var experiences = [
+const experiences = [
   { id: 1, company: 'Fiverr',        role: 'Freelance Graphic Designer', years: '2018 - Present'   },
   { id: 2, company: 'Moonstone Co',  role: 'Font Designer',              years: '2020 - 2022'      },
   { id: 3, company: 'BTW Edutech',   role: 'UI/UX Designer',             years: 'Jul 2023 - Jul 2024' },
@@ -120,24 +117,22 @@ function About() {
         </div>
       </div>
       <div className="about-cards">
-        {experiences.map(function(exp) {
-          return (
-            <div className="exp-card" key={exp.id}>
-              <div className="exp-card-company">{exp.company}</div>
-              <div className="exp-card-role">{exp.role}</div>
-              <div className="exp-card-years">{exp.years}</div>
-            </div>
-          );
-        })}
+        {experiences.map((exp) => (
+          <div className="exp-card" key={exp.id}>
+            <div className="exp-card-company">{exp.company}</div>
+            <div className="exp-card-role">{exp.role}</div>
+            <div className="exp-card-years">{exp.years}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
 /* =======================================================
-   CERTIFICATION / SKILLS SECTION  — border-radius: 96px
+   CERTIFICATION / SKILLS SECTION
    ======================================================= */
-var certs = [
+const certs = [
   {
     id: 1,
     name: 'Google UX Design: Specialization',
@@ -156,33 +151,29 @@ function Skills() {
   return (
     <section className="skills" id="skills">
       <h2 className="skills-title">Certification / Skills</h2>
-      {certs.map(function(cert) {
-        return (
-          <div className="cert-block" key={cert.id}>
-            <div className="cert-name">{cert.name}</div>
-            <div className="skills-row">
-              {cert.row1.map(function(skill) {
-                return <span className="skill-pill" key={skill}>{skill}</span>;
-              })}
-            </div>
-            <div className="skills-row">
-              {cert.row2.map(function(skill) {
-                return <span className="skill-pill" key={skill}>{skill}</span>;
-              })}
-            </div>
+      {certs.map((cert) => (
+        <div className="cert-block" key={cert.id}>
+          <div className="cert-name">{cert.name}</div>
+          <div className="skills-row">
+            {cert.row1.map((skill) => (
+              <span className="skill-pill" key={skill}>{skill}</span>
+            ))}
           </div>
-        );
-      })}
+          <div className="skills-row">
+            {cert.row2.map((skill) => (
+              <span className="skill-pill" key={skill}>{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
   );
 }
 
 /* =======================================================
    PROJECT CARDS
-   — 세로 스크롤 + scroll-snap
-   — 뷰포트 가운데 카드: opacity 100%, 잘리는 카드: opacity 50%
    ======================================================= */
-var projects = [
+const projects = [
   {
     id: 1,
     title: 'Roommate Finding App | Mobile App Design | UI/UX',
@@ -210,63 +201,59 @@ var projects = [
 ];
 
 function ProjectCards() {
-  var containerRef = useRef(null);
+  const containerRef = useRef(null);
 
-  useEffect(function() {
-    var container = containerRef.current;
+  useEffect(() => {
+    const container = containerRef.current;
     if (!container) return;
 
-    function updateOpacity() {
-      var cards = container.querySelectorAll('.project-card');
-      var containerRect = container.getBoundingClientRect();
-      // 컨테이너의 세로 중앙값
-      var containerCenterY = containerRect.top + containerRect.height / 2;
+    const updateOpacity = () => {
+      const cards = container.querySelectorAll('.project-card');
+      const containerRect = container.getBoundingClientRect();
+      const containerCenterY = containerRect.top + containerRect.height / 2;
 
-      cards.forEach(function(card) {
-        var cardRect = card.getBoundingClientRect();
-        var cardCenterY = cardRect.top + cardRect.height / 2;
-        var distance = Math.abs(cardCenterY - containerCenterY);
-        // 카드 높이의 절반을 기준으로 ratio 계산
-        var ratio = Math.min(distance / (container.offsetHeight * 0.5), 1);
-        var opacity = 1 - ratio * 0.52;
-        var scale = 1 - ratio * 0.035;
+      cards.forEach((card) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const distance = Math.abs(cardCenterY - containerCenterY);
+        const ratio = Math.min(distance / (container.offsetHeight * 0.5), 1);
+        const opacity = 1 - ratio * 0.52;
+        const scale = 1 - ratio * 0.035;
         card.style.opacity = opacity;
-        card.style.transform = 'scale(' + scale + ')';
+        card.style.transform = `scale(${scale})`;
       });
-    }
+    };
 
     container.addEventListener('scroll', updateOpacity);
-    // 초기 실행: 첫 번째 카드가 중앙에 오도록 scrollTop = 0
-    setTimeout(function() {
+    const timeoutId = setTimeout(() => {
       container.scrollTop = 0;
       updateOpacity();
     }, 80);
 
-    return function() {
+    return () => {
       container.removeEventListener('scroll', updateOpacity);
+      clearTimeout(timeoutId);
     };
   }, []);
 
   return (
     <div className="project-cards-scroll" ref={containerRef}>
-      {projects.map(function(proj) {
-        return (
-          <div className="project-card" key={proj.id}>
-            <div className="project-card-text">
-              <h3 className="project-card-title">{proj.title}</h3>
-              <div className="project-card-tags">
-                {proj.tags.map(function(tag) {
-                  return <span className="project-tag" key={tag}>{tag}</span>;
-                })}
-              </div>
-              <p className="project-card-desc">{proj.desc}</p>
+      {projects.map((proj) => (
+        <div className="project-card" key={proj.id}>
+          <div className="project-card-text">
+            <h3 className="project-card-title">{proj.title}</h3>
+            <div className="project-card-tags">
+              {proj.tags.map((tag) => (
+                <span className="project-tag" key={tag}>{tag}</span>
+              ))}
             </div>
-            <div className="project-card-image">
-              <img src={proj.image} alt={proj.alt} />
-            </div>
+            <p className="project-card-desc">{proj.desc}</p>
           </div>
-        );
-      })}
+          <div className="project-card-image">
+            <img src={proj.image} alt={proj.alt} />
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -285,10 +272,8 @@ function Projects() {
 
 /* =======================================================
    EXPLORE / OTHER WORKS
-   — div.explor_component: 하단 스크롤 시 카드가 오른쪽→왼쪽으로 이동
-   — Swiper 기능 (터치/마우스 드래그) + 스크롤 연동 자동 이동
    ======================================================= */
-var otherWorksItems = [
+const otherWorksItems = [
   { id: 1, image: otherWorksImgs[0], label: 'Stock Market App' },
   { id: 2, image: otherWorksImgs[1], label: 'UI Exploration'   },
   { id: 3, image: otherWorksImgs[2], label: 'Brand Design'     },
@@ -296,80 +281,73 @@ var otherWorksItems = [
 ];
 
 function ExploreSection() {
-  var sectionRef = useRef(null);
-  var trackRef   = useRef(null);
-  var isDragging = useRef(false);
-  var startX     = useRef(0);
-  var dragTranslate = useRef(0); // 드래그 시작 시점의 현재 translate
+  const sectionRef = useRef(null);
+  const trackRef   = useRef(null);
+  const isDragging = useRef(false);
+  const startX     = useRef(0);
+  const dragTranslate = useRef(0);
 
-  useEffect(function() {
-    var section = sectionRef.current;
-    var track   = trackRef.current;
+  useEffect(() => {
+    const section = sectionRef.current;
+    const track   = trackRef.current;
     if (!section || !track) return;
 
-    // 현재 translateX 값 읽기
-    function getCurrentTranslate() {
-      var style = window.getComputedStyle(track);
-      var matrix = new DOMMatrix(style.transform);
+    const getCurrentTranslate = () => {
+      const style = window.getComputedStyle(track);
+      const matrix = new DOMMatrix(style.transform);
       return matrix.m41;
-    }
+    };
 
-    // ── 스크롤 연동: 페이지를 아래로 내릴수록 카드가 왼쪽으로 이동 ──
-    function onScroll() {
-      // 드래그 중이면 스크롤 연동 스킵
+    const onScroll = () => {
       if (isDragging.current) return;
 
-      var rect = section.getBoundingClientRect();
-      var sectionH = section.offsetHeight;
-      var viewH = window.innerHeight;
+      const rect = section.getBoundingClientRect();
+      const sectionH = section.offsetHeight;
+      const viewH = window.innerHeight;
 
       if (rect.bottom < 0 || rect.top > viewH) return;
 
-      // progress 0 ~ 1
-      var scrollable = sectionH - viewH;
-      var progress = scrollable > 0 ? (-rect.top) / scrollable : 0;
+      const scrollable = sectionH - viewH;
+      let progress = scrollable > 0 ? (-rect.top) / scrollable : 0;
       progress = Math.max(0, Math.min(1, progress));
 
-      var wrapper = track.parentElement;
-      var maxTranslate = track.scrollWidth - wrapper.offsetWidth;
+      const wrapper = track.parentElement;
+      const maxTranslate = track.scrollWidth - wrapper.offsetWidth;
       if (maxTranslate <= 0) return;
 
-      // 오른쪽에서 왼쪽: progress=0 → translateX=0, progress=1 → -maxTranslate
-      var tx = -(progress * maxTranslate);
+      const tx = -(progress * maxTranslate);
       track.style.transition = 'none';
-      track.style.transform = 'translateX(' + tx + 'px)';
-    }
+      track.style.transform = `translateX(${tx}px)`;
+    };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    // 초기 실행
-    setTimeout(onScroll, 60);
+    const timeoutId = setTimeout(onScroll, 60);
 
-    // ── 드래그(Swiper) 기능 ──
-    var wrapper = track.parentElement;
+    const wrapper = track.parentElement;
 
-    function onPointerDown(e) {
+    const onPointerDown = (e) => {
       isDragging.current = true;
-      var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       startX.current = clientX;
       dragTranslate.current = getCurrentTranslate();
       track.style.transition = 'none';
-    }
+    };
 
-    function onPointerMove(e) {
+    const onPointerMove = (e) => {
       if (!isDragging.current) return;
-      var clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      var diff = clientX - startX.current;
-      var maxT = -(track.scrollWidth - wrapper.offsetWidth);
-      var newT = Math.min(0, Math.max(maxT, dragTranslate.current + diff));
-      track.style.transform = 'translateX(' + newT + 'px)';
-      if (e.cancelable) e.preventDefault();
-    }
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const diff = clientX - startX.current;
+      const maxT = -(track.scrollWidth - wrapper.offsetWidth);
+      const newT = Math.min(0, Math.max(maxT, dragTranslate.current + diff));
+      track.style.transform = `translateX(${newT}px)`;
+      if (e.cancelable && !e.touches) e.preventDefault();
+    };
 
-    function onPointerUp() {
+    const onPointerUp = () => {
       if (!isDragging.current) return;
       isDragging.current = false;
       track.style.transition = 'transform 0.35s ease';
-    }
+    };
 
     wrapper.addEventListener('mousedown',  onPointerDown);
     wrapper.addEventListener('touchstart', onPointerDown, { passive: true });
@@ -378,8 +356,9 @@ function ExploreSection() {
     window.addEventListener('mouseup',   onPointerUp);
     window.addEventListener('touchend',  onPointerUp);
 
-    return function() {
+    return () => {
       window.removeEventListener('scroll', onScroll);
+      clearTimeout(timeoutId);
       wrapper.removeEventListener('mousedown',  onPointerDown);
       wrapper.removeEventListener('touchstart', onPointerDown);
       window.removeEventListener('mousemove',  onPointerMove);
@@ -392,22 +371,16 @@ function ExploreSection() {
   return (
     <section className="other-works" id="other-works" ref={sectionRef}>
       <h2 className="other-works-title">My Other Works!</h2>
-
-      {/* div.explor_component */}
       <div className="explor-component">
-        {/* OtherCardWrap */}
         <div className="other-card-wrap">
-          {/* 카드 트랙 */}
           <div className="other-card-track" ref={trackRef}>
-            {otherWorksItems.map(function(item) {
-              return (
-                <div className="other-works-item" key={item.id}>
-                  <div className="other-works-item-inner">
-                    <img src={item.image} alt={item.label} />
-                  </div>
+            {otherWorksItems.map((item) => (
+              <div className="other-works-item" key={item.id}>
+                <div className="other-works-item-inner">
+                  <img src={item.image} alt={item.label} />
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -469,7 +442,6 @@ export default function App() {
       <Projects />
       <ExploreSection />
       <Footer />
-      {/* Navbar: 화면 가운데 하단에 고정 */}
       <Navbar />
     </div>
   );

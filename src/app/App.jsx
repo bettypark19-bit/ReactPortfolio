@@ -10,6 +10,7 @@ const projectImgs = [
   '/images/project-1.png',
   '/images/project-2.png',
   '/images/project-3.png',
+  '/images/project-4.png',
 ];
 
 const otherWorksImgs = [
@@ -17,6 +18,9 @@ const otherWorksImgs = [
   '/images/other-works-2.png',
   '/images/other-works-3.png',
   '/images/other-works-4.png',
+  '/images/other-works-5.png',
+  '/images/other-works-6.png',
+  '/images/other-works-7.png',
 ];
 
 /* =======================================================
@@ -47,10 +51,10 @@ function Hero() {
     <section className="hero">
       <div className="hero-text-content">
         <div className="hero-location">
-          <span className="hero-location-icon">📍</span>
-          <span>Based in Bali</span>
+          {/* <span className="hero-location-icon">📍</span> */}
+          <span>분석은 <span className='imp'>Tight!</span> 디자인  <span className='imp'>Fast!</span> 디테일  <span className='imp'>Perfect!</span></span>
         </div>
-        <div className="hero-role">Product Designer</div>
+        <div className="hero-role"> <span className='imp'>Designer</span> 박수빈</div>
       </div>
 
       <div className="hero-marquee-wrapper" style={{ top: '340px' }}>
@@ -108,7 +112,7 @@ function About() {
             />
           </div>
           <h1 className="about-hero-text">
-            빠른 이해! 신속 작업! 하는<br /> <span className="about-highlight">quick<span className="about-red">lee</span>박수빈</span> 입니다.
+           완결을 만드는 <br /> <span className="about-highlight">디자이너 박수빈</span> 입니다.
           </h1>
         </div>
 
@@ -169,7 +173,7 @@ const certs = [
   {
     id: 1,
     name: '자격증',
-    row1: ['운전면허증', '포토샵 1급', '일러스트 1급'],
+    row1: ['운전면허증', '포토샵 1급', '일러스트 1급','OPIC IH'],
     row2: [],
   },
   {
@@ -229,6 +233,14 @@ const projects = [
     tags: ['Landing Page', 'Web Design', 'UI/UX Design', 'Design System'],
     desc: "BTW Academy is a tutoring center that prepares students for entrance exams and interviews at Indonesia's top State Universities and Service Academies.",
     image: projectImgs[2],
+    alt: 'BTW Academy Project',
+  },
+    {
+    id: 4,
+    title: 'BTW Academy',
+    tags: ['Landing Page', 'Web Design', 'UI/UX Design', 'Design System'],
+    desc: "BTW Academy is a tutoring center that prepares students for entrance exams and interviews at Indonesia's top State Universities and Service Academies.",
+    image: projectImgs[3],
     alt: 'BTW Academy Project',
   },
 ];
@@ -296,7 +308,7 @@ function Projects() {
     <section className="projects" id="projects">
       <div className="projects-header">
         <h2 className="projects-title">{'Projects\n/Case Studies'}</h2>
-        <button className="projects-see-all">See all Cases &nbsp;↗</button>
+        <button className="projects-see-all"><span className='t-white'> See all Cases &nbsp;↗</span></button>
       </div>
       <ProjectCards />
     </section>
@@ -311,6 +323,9 @@ const otherWorksItems = [
   { id: 2, image: otherWorksImgs[1], label: 'UI Exploration'   },
   { id: 3, image: otherWorksImgs[2], label: 'Brand Design'     },
   { id: 4, image: otherWorksImgs[3], label: 'Web Design'       },
+  { id: 5, image: otherWorksImgs[4], label: 'UI Exploration'   },
+  { id: 6, image: otherWorksImgs[5], label: 'Brand Design'     },
+  { id: 7, image: otherWorksImgs[6], label: 'Web Design'       },
 ];
 
 function ExploreSection() {

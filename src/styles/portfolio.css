@@ -138,8 +138,12 @@ body {
   font-size: 24px;
 }
 
+.imp{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .hero-role {
-  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-family: Pretendard, 'Arial Narrow', Arial, sans-serif;
   font-size: 100px;
   font-weight: 900;
   text-transform: uppercase;
@@ -226,6 +230,8 @@ body {
 }
 
 .hero-person-photo {
+  position: relative;
+  bottom: -10px;
   display: block;
   height: 900px;
   width: auto;
@@ -307,8 +313,8 @@ body {
   font-size: 56px;
 }
 
-.about-red {
-  color: #ff0000;
+.about-blue {
+  color: #6eb3c9;
 }
 
 /* 하단 3단 그리드 레이아웃 */
@@ -467,6 +473,7 @@ body {
 }
 
 .projects-title {
+  color: #ffffff;
   font-family: Impact, 'Arial Narrow', Arial, sans-serif;
   font-size: 80px;
   font-weight: 900;
@@ -474,10 +481,13 @@ body {
   line-height: 1.1;
   white-space: pre-line;
 }
+.t-white{
+  color: #ffffff;
+}
 
 .projects-see-all {
   background: none;
-  border: 2px solid #100a27;
+  border: 2px solid #ffffff;
   padding: 12px 24px;
   border-radius: 100px;
   font-family: 'Instrument Sans', sans-serif;
@@ -488,7 +498,7 @@ body {
 }
 
 .projects-see-all:hover {
-  background: #100a27;
+  background: #018abe;
   color: white;
 }
 
@@ -498,7 +508,7 @@ body {
   flex-direction: column;
   gap: 80px;
   padding: 0 96px;
-  height: 78vh;
+  height: 80vh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   /* Scrollbar hide */
@@ -591,6 +601,7 @@ body {
 }
 
 .other-works-title {
+  color: #fff;
   font-family: Impact, 'Arial Narrow', Arial, sans-serif;
   font-size: 80px;
   font-weight: 900;
@@ -777,13 +788,13 @@ body {
   .about-tag        { font-size: 14px; padding: 10px 16px; }
   .about-edu-list li { font-size: 15px; }
 
-  .skills           { border-radius: 48px; }
+  .skills           { border-radius: 0 0 48px 48px; }
   .skills-title     { font-size: 48px; }
   .skills-row       { padding: 0 24px; }
   .skill-pill       { font-size: 16px; padding: 10px 14px; }
   .projects-header  { padding: 0 24px; }
   .projects-title   { font-size: 48px; }
-  .project-card     { flex-direction: column; padding: 10px; border-radius: 40px; }
+  .project-card     { flex-direction: column; padding: 20px; border-radius: 40px; }
   .project-card-image { width: 100%; height: 240px; margin-top: 32px; }
   .footer-cta-card  { padding: 40px; border-radius: 40px; }
   .footer-cta-title { font-size: 32px; }

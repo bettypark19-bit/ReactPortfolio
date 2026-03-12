@@ -4,7 +4,7 @@ import '../styles/portfolio.css';
 /* =======================================================
    이미지 경로 — public/images/ 폴더 참조
    ======================================================= */
-const personPhoto = '/images/person.png';
+const personPhoto = ['/images/person.png','/images/person2.png',];
 
 const projectImgs = [
   '/images/project-1.png',
@@ -85,7 +85,7 @@ function Hero() {
           </div>
           <img
             className="hero-person-photo"
-            src={personPhoto}
+            src={personPhoto[0]}
             alt="Park Soobin - Product Designer"
           />
         </div>
@@ -105,7 +105,7 @@ function About() {
         <div className="about-hero">
           <div className="about-avatar-group">
             <img 
-              src={personPhoto} 
+              src={personPhoto[1]} 
               alt="Park Soobin" 
               className="about-avatar-img" 
             />

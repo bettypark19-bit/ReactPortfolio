@@ -1,10 +1,18 @@
-/* theme.css — Tailwind @apply 구문 제거, 순수 CSS 변수만 유지 */
+/* theme.css — 핵심적인 공통 변수만 유지 */
 
 :root {
-  --font-size: 16px;
-  --radius: 0.625rem;
+  /* Fonts - 가장 자주 쓰이는 두 핵심 폰트 */
+  --font-main: 'Instrument Sans', 'Pretendard', sans-serif;
+  --font-impact: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+
+  /* Colors - 프로젝트 전체의 톤앤매너를 결정하는 3가지 핵심 색상 */
+  --color-primary: #93cbd8;   /* 메인 배경색 */
+  --color-text-main: #100a27; /* 메인 텍스트색 */
+  --color-accent: #018abe;    /* 포인트 블루 */
+
+  /* 기타 수치나 보조 색상은 각 CSS에서 직접 관리하여 난잡함을 방지합니다. */
 }
 
 html {
-  font-size: var(--font-size);
+  font-size: 16px;
 }

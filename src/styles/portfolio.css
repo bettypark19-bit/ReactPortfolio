@@ -627,8 +627,14 @@ body {
 .other-card-track {
   display: flex;
   gap: 40px;
-  padding: 20px 96px;
+  padding: 20px 0px 0px 96px;
   will-change: transform;
+}
+
+.other-card-track::after {
+  content: "";
+  flex: 0 0 96px;
+  width: 96px;
 }
 
 .other-works-item {
@@ -759,7 +765,7 @@ body {
   .project-cards-scroll { padding: 0 48px; }
   .project-card-image { width: 60%;}
   .footer           { padding: 60px 48px 100px; }
-  .other-card-track { padding: 20px 48px; }
+  .other-card-track { padding: 20px 0px 0px 48px; }
   
   .about-hero       { gap: 40px; }
   .about-hero-text  { font-size: 36px; }

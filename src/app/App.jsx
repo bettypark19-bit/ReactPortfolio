@@ -51,8 +51,7 @@ function Hero() {
     <section className="hero">
       <div className="hero-text-content">
         <div className="hero-location">
-          {/* <span className="hero-location-icon">📍</span> */}
-          <span>분석은 <span className='imp'>Tight!</span> 디자인  <span className='imp'>Fast!</span> 디테일  <span className='imp'>Perfect!</span></span>
+          <span>수려하게 디자인하고 빈틈없이 구현합니다.</span>
         </div>
         <div className="hero-role"> <span className='imp'>Designer</span> 박수빈</div>
       </div>
@@ -213,7 +212,7 @@ function Skills() {
 const projects = [
   {
     id: 1,
-    title: 'Roommate Finding App | Mobile App Design | UI/UX',
+    title: 'Airbnb 리디자인 & 홍보 영상',
     tags: ['Mobile App', 'Case Study', 'UI/UX Design'],
     desc: 'Covivant is a roommate finder app designed to make the process of finding a compatible and trustworthy roommate easier, safer, and more social.',
     image: projectImgs[0],
@@ -221,7 +220,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'AsesMe',
+    title: '국회도서관',
     tags: ['Landing Page', 'Web Design', 'UI/UX Design', 'Design System'],
     desc: 'A solution for conducting assessments & competency tests independently with a format that is transparent, accurate and easily accessible.',
     image: projectImgs[1],
@@ -229,7 +228,7 @@ const projects = [
   },
   {
     id: 3,
-    title: 'BTW Academy',
+    title: '하루알 광고영상',
     tags: ['Landing Page', 'Web Design', 'UI/UX Design', 'Design System'],
     desc: "BTW Academy is a tutoring center that prepares students for entrance exams and interviews at Indonesia's top State Universities and Service Academies.",
     image: projectImgs[2],
@@ -237,7 +236,7 @@ const projects = [
   },
     {
     id: 4,
-    title: 'BTW Academy',
+    title: '서울국제주류&와인박람회 포스터',
     tags: ['Landing Page', 'Web Design', 'UI/UX Design', 'Design System'],
     desc: "BTW Academy is a tutoring center that prepares students for entrance exams and interviews at Indonesia's top State Universities and Service Academies.",
     image: projectImgs[3],
@@ -319,13 +318,13 @@ function Projects() {
    EXPLORE / OTHER WORKS
    ======================================================= */
 const otherWorksItems = [
-  { id: 1, image: otherWorksImgs[0], label: 'Stock Market App' },
-  { id: 2, image: otherWorksImgs[1], label: 'UI Exploration'   },
-  { id: 3, image: otherWorksImgs[2], label: 'Brand Design'     },
-  { id: 4, image: otherWorksImgs[3], label: 'Web Design'       },
-  { id: 5, image: otherWorksImgs[4], label: 'UI Exploration'   },
-  { id: 6, image: otherWorksImgs[5], label: 'Brand Design'     },
-  { id: 7, image: otherWorksImgs[6], label: 'Web Design'       },
+  { id: 1, image: otherWorksImgs[0], label: '진진진 리플렛' },
+  { id: 2, image: otherWorksImgs[1], label: '기장군 캐릭터'   },
+  { id: 3, image: otherWorksImgs[2], label: '카드 뉴스'     },
+  { id: 4, image: otherWorksImgs[3], label: '북커버'       },
+  { id: 5, image: otherWorksImgs[4], label: 'Sway seat'   },
+  { id: 6, image: otherWorksImgs[5], label: 'Bird'     },
+  { id: 7, image: otherWorksImgs[6], label: 'In to the Sea'       },
 ];
 
 function ExploreSection() {

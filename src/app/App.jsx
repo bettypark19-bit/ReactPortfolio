@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import '../styles/portfolio.css';
 
 /* =======================================================
-   이미지 경로 — public/images/ 폴더 참조
+   이미지 경로 — public/images/ 폴더 참조2
    ======================================================= */
 const personPhoto = ['/images/person.png','/images/person2.png',];
 
@@ -246,6 +246,7 @@ const projects = [
 
 function ProjectCards() {
   const containerRef = useRef(null);
+  const rafId = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -263,19 +264,32 @@ function ProjectCards() {
         const ratio = Math.min(distance / (container.offsetHeight * 0.5), 1);
         const opacity = 1 - ratio * 0.52;
         const scale = 1 - ratio * 0.035;
+        
+        // requestAnimationFrame 내에서 스타일 변경
         card.style.opacity = opacity;
         card.style.transform = `scale(${scale})`;
       });
+      rafId.current = null;
     };
 
-    container.addEventListener('scroll', updateOpacity);
+    const handleScroll = () => {
+      if (!rafId.current) {
+        rafId.current = requestAnimationFrame(updateOpacity);
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // 초기 실행
     const timeoutId = setTimeout(() => {
-      container.scrollTop = 0;
-      updateOpacity();
+        // 초기 스크롤 위치 설정이 꼭 필요한지 확인 필요.
+        // container.scrollTop = 0; // 이 부분은 사용자 경험을 해칠 수 있으므로 제거하거나 필요하다면 유지
+        updateOpacity();
     }, 80);
 
     return () => {
-      container.removeEventListener('scroll', updateOpacity);
+      container.removeEventListener('scroll', handleScroll);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
       clearTimeout(timeoutId);
     };
   }, []);
@@ -333,6 +347,7 @@ function ExploreSection() {
   const isDragging = useRef(false);
   const startX     = useRef(0);
   const dragTranslate = useRef(0);
+  const rafId      = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -340,36 +355,54 @@ function ExploreSection() {
     if (!section || !track) return;
 
     const getCurrentTranslate = () => {
+      if (!track) return 0;
       const style = window.getComputedStyle(track);
       const matrix = new DOMMatrix(style.transform);
       return matrix.m41;
     };
 
-    const onScroll = () => {
-      if (isDragging.current) return;
+    const updatePosition = () => {
+      if (isDragging.current || !section || !track) {
+          rafId.current = null;
+          return;
+      }
 
       const rect = section.getBoundingClientRect();
       const viewH = window.innerHeight;
 
-      if (rect.bottom < 0 || rect.top > viewH) return;
+      // 뷰포트 내에 있을 때만 계산
+      if (rect.bottom < 0 || rect.top > viewH) {
+          rafId.current = null;
+          return;
+      }
 
       const wrapper = track.parentElement;
       const maxTranslate = track.scrollWidth - wrapper.offsetWidth;
-      if (maxTranslate <= 0) return;
+      if (maxTranslate <= 0) {
+          rafId.current = null;
+          return;
+      }
 
-      // 섹션의 전체 높이에서 뷰포트 높이를 뺀 만큼이 실제 스크롤 거리
       const scrollDistance = section.offsetHeight - viewH;
-      // 섹션이 상단(top: 0)에 도달한 시점부터 진행률 계산
       let progress = -rect.top / scrollDistance;
       progress = Math.max(0, Math.min(1, progress));
 
       const tx = -(progress * maxTranslate);
-      track.style.transition = 'none';
+      track.style.transition = 'none'; // 스크롤 시에는 즉각 반응해야 함
       track.style.transform = `translateX(${tx}px)`;
+      
+      rafId.current = null;
+    };
+
+    const onScroll = () => {
+      if (!rafId.current) {
+        rafId.current = requestAnimationFrame(updatePosition);
+      }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    const timeoutId = setTimeout(onScroll, 60);
+    // 초기 실행
+    updatePosition();
 
     const wrapper = track.parentElement;
 
@@ -379,22 +412,36 @@ function ExploreSection() {
       startX.current = clientX;
       dragTranslate.current = getCurrentTranslate();
       track.style.transition = 'none';
+      track.style.cursor = 'grabbing';
+      // 텍스트 선택 방지
+      document.body.style.userSelect = 'none';
     };
 
     const onPointerMove = (e) => {
       if (!isDragging.current) return;
+      
+      // 드래그 중에는 스크롤 이벤트에 의한 업데이트 방지
+      if (rafId.current) {
+          cancelAnimationFrame(rafId.current);
+          rafId.current = null;
+      }
+
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const diff = clientX - startX.current;
       const maxT = -(track.scrollWidth - wrapper.offsetWidth);
+      // 경계 제한
       const newT = Math.min(0, Math.max(maxT, dragTranslate.current + diff));
       track.style.transform = `translateX(${newT}px)`;
+      
       if (e.cancelable && !e.touches) e.preventDefault();
     };
 
     const onPointerUp = () => {
       if (!isDragging.current) return;
       isDragging.current = false;
-      track.style.transition = 'transform 0.35s ease';
+      track.style.transition = 'transform 0.35s ease-out'; // 부드러운 감속 효과
+      track.style.cursor = 'grab';
+      document.body.style.userSelect = '';
     };
 
     wrapper.addEventListener('mousedown',  onPointerDown);
@@ -406,13 +453,17 @@ function ExploreSection() {
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      clearTimeout(timeoutId);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+      
       wrapper.removeEventListener('mousedown',  onPointerDown);
       wrapper.removeEventListener('touchstart', onPointerDown);
       window.removeEventListener('mousemove',  onPointerMove);
       window.removeEventListener('touchmove',  onPointerMove);
       window.removeEventListener('mouseup',   onPointerUp);
       window.removeEventListener('touchend',  onPointerUp);
+      
+      // Cleanup style
+      document.body.style.userSelect = '';
     };
   }, []);
 
@@ -422,7 +473,7 @@ function ExploreSection() {
         <h2 className="other-works-title">My Other Works!</h2>
         <div className="explor-component">
           <div className="other-card-wrap">
-            <div className="other-card-track" ref={trackRef}>
+            <div className="other-card-track" ref={trackRef} style={{ cursor: 'grab' }}>
               {otherWorksItems.map((item) => (
                 <div className="other-works-item" key={item.id}>
                   <div className="other-works-item-inner">
@@ -486,13 +537,13 @@ function Footer() {
 export default function App() {
   return (
     <div className="portfolio-root">
+      <Navbar />
       <Hero />
       <About />
       <Skills />
       <Projects />
       <ExploreSection />
       <Footer />
-      <Navbar />
     </div>
   );
 }

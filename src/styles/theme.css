@@ -3,7 +3,7 @@
 :root {
   /* Fonts - 가장 자주 쓰이는 두 핵심 폰트 */
   --font-main: 'Instrument Sans', 'Pretendard', sans-serif;
-  --font-impact: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  --font-accent: 'LeferiPoint-BlackA', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
 
   /* Colors - 프로젝트 전체의 톤앤매너를 결정하는 3가지 핵심 색상 */
   --color-primary: #93cbd8;   /* 메인 배경색 */

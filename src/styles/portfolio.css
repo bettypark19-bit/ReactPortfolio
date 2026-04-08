@@ -762,6 +762,37 @@ body {
   opacity: 0.6;
 }
 
+/* Custom Cursor */
+.cursor-dot, .cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10000;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+}
+
+.cursor-follower {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(1, 138, 190, 0.2); /* 포인트 컬러 투명도 */
+}
+
+/* 기본 커서 숨기기 (선택 사항, 수빈 님의 취향에 따라 유지 가능) */
+body {
+  cursor: none;
+}
+a, button, .link {
+  cursor: none;
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */

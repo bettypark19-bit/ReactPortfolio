@@ -126,25 +126,37 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin-top: 40px;
+}
+
+.hero-title-thin,
+.hero-title-bold {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 120px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  display: flex;
+  line-height: 1;
 }
 
 .hero-title-thin {
-  font-family: 'Pretendard', sans-serif;
-  font-size: 120px;
   font-weight: 200;
-  text-transform: uppercase;
-  color: var(--color-text-main);
   letter-spacing: -6px;
 }
 
 .hero-title-bold {
-  font-family: 'Pretendard', sans-serif;
-  font-size: 120px;
   font-weight: 800;
-  text-transform: uppercase;
-  color: var(--color-text-main);
   letter-spacing: -4px;
+}
+
+.split-parent {
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 4px; /* 글자 사이 간격 살짝 추가 */
+}
+
+.split-char {
+  display: inline-block;
+  will-change: transform;
 }
 
 /* 이미지 및 말풍선 메인 영역: 정중앙 */

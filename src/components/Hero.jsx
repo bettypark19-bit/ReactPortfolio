@@ -1,16 +1,77 @@
+import { useLayoutEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileLines } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { personPhoto } from '../data/images';
 
 function Hero() {
+  const titleRef = useRef(null);
+  const [index, setIndex] = useState(0);
+
+  const phrases = [
+    { thin: '분석은', bold: 'TIGHT' },
+    { thin: '디자인', bold: 'FAST' },
+    { thin: '디테일', bold: 'PERFECT' },
+  ];
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          // 애니메이션 종료 후 다음 문구로 변경
+          setIndex((prev) => (prev + 1) % phrases.length);
+        },
+      });
+
+      // 1. 나타나는 애니메이션 (In)
+      tl.fromTo(
+        '.split-char',
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.05,
+          ease: 'power4.out',
+        }
+      )
+      // 2. 유지 시간 (Pause)
+      .to({}, { duration: 1.5 })
+      // 3. 사라지는 애니메이션 (Out)
+      .to('.split-char', {
+        y: -100,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.03,
+        ease: 'power4.in',
+      });
+    }, titleRef);
+
+    return () => ctx.revert();
+  }, [index]); // index가 변경될 때마다 효과 재실행
+
+  const splitText = (text) => {
+    return text.split('').map((char, i) => (
+      <span key={i} className="split-parent">
+        <span className="split-char">{char === ' ' ? '\u00A0' : char}</span>
+      </span>
+    ));
+  };
+
   return (
     <section className="hero">
       {/* 타이틀 영역: 가운데 상단 */}
-      <div className="hero-title">
-        <span className="hero-title-thin">분석은</span>
-        <span className="hero-title-bold">TIGHT</span>
+      <div className="hero-title" ref={titleRef}>
+        <div className="hero-title-thin">
+          {splitText(phrases[index].thin)}
+        </div>
+        <div className="hero-title-bold">
+          {splitText(phrases[index].bold)}
+        </div>
       </div>
+{/* ... 이하 동일 */}
+{/* ... 이하 동일 */}
 
       <div className="hero-logo-decoration right">
         <div className="hero-logo-circle blue"></div>

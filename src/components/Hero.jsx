@@ -6,7 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { personPhoto } from '../data/images';
 
 function Hero() {
-  const titleRef = useRef(null);
+  const heroRef = useRef(null);
   const [index, setIndex] = useState(0);
 
   const phrases = [
@@ -15,16 +15,37 @@ function Hero() {
     { thin: '디테일', bold: 'PERFECT' },
   ];
 
+  // 1. 블롭 애니메이션: 배경 전체를 자유롭게 이동
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to('.blob', {
+        x: 'random(-300, 300)', // 이동 범위 더욱 확대
+        y: 'random(-300, 300)',
+        scale: 'random(0.6, 2.5)',
+        rotation: 'random(-360, 360)',
+        duration: 'random(8, 12)',
+        repeat: -1,
+        yoyo: true,
+        repeatRefresh: true,
+        ease: 'sine.inOut',
+        stagger: {
+          amount: 5,
+          from: 'random'
+        }
+      });
+    }, heroRef);
+    return () => ctx.revert();
+  }, []);
+
+  // 2. 텍스트 애니메이션
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         onComplete: () => {
-          // 애니메이션 종료 후 다음 문구로 변경
           setIndex((prev) => (prev + 1) % phrases.length);
         },
       });
 
-      // 1. 나타나는 애니메이션 (In)
       tl.fromTo(
         '.split-char',
         { y: 100, opacity: 0 },
@@ -36,9 +57,7 @@ function Hero() {
           ease: 'power4.out',
         }
       )
-      // 2. 유지 시간 (Pause)
       .to({}, { duration: 1.5 })
-      // 3. 사라지는 애니메이션 (Out)
       .to('.split-char', {
         y: -100,
         opacity: 0,
@@ -46,10 +65,9 @@ function Hero() {
         stagger: 0.03,
         ease: 'power4.in',
       });
-    }, titleRef);
-
+    }, heroRef);
     return () => ctx.revert();
-  }, [index]); // index가 변경될 때마다 효과 재실행
+  }, [index]);
 
   const splitText = (text) => {
     return text.split('').map((char, i) => (
@@ -60,9 +78,19 @@ function Hero() {
   };
 
   return (
-    <section className="hero">
-      {/* 타이틀 영역: 가운데 상단 */}
-      <div className="hero-title" ref={titleRef}>
+    <section className="hero" ref={heroRef}>
+      {/* 배경 블롭 데코레이션: 카드 없이 전체 화면 활용 */}
+      <div className="hero-bg-blobs">
+        <div className="blob blob-blue" style={{ top: '15%', left: '10%' }}></div>
+        <div className="blob blob-pink" style={{ top: '60%', left: '20%' }}></div>
+        <div className="blob blob-accent" style={{ top: '30%', right: '15%' }}></div>
+        <div className="blob blob-white" style={{ bottom: '20%', right: '10%' }}></div>
+        <div className="blob blob-light" style={{ top: '50%', left: '50%' }}></div>
+        <div className="blob blob-blue" style={{ bottom: '10%', left: '30%' }}></div>
+      </div>
+
+      {/* 타이틀 영역 */}
+      <div className="hero-title">
         <div className="hero-title-thin">
           {splitText(phrases[index].thin)}
         </div>
@@ -70,38 +98,23 @@ function Hero() {
           {splitText(phrases[index].bold)}
         </div>
       </div>
-{/* ... 이하 동일 */}
-{/* ... 이하 동일 */}
 
-      <div className="hero-logo-decoration right">
-        <div className="hero-logo-circle blue"></div>
-      </div>
-      <div className="hero-logo-decoration left">
-        <div className="hero-logo-circle pink"></div>
-      </div>
-
-      {/* 이미지 및 말풍선 영역: 정중앙 */}
+      {/* 이미지 및 말풍선 영역 */}
       <div className="hero-main-area">
         <div className="hero-image-wrapper">
-          {/* 말풍선 1: Hi! */}
           <div className="hero-chat-bubble chat-hi">
             <span className="hero-chat-text">Hi! I'm Soobin!</span>
           </div>
-
-          {/* 말풍선 2: 이력서 보기 */}
           <div className="hero-chat-bubble chat-resume">
             <span className="hero-chat-text">
               <FontAwesomeIcon icon={faFileLines} className="mr-2" />이력서 보기
             </span>
           </div>
-
-          {/* 말풍선 3: 깃허브 보기 */}
           <div className="hero-chat-bubble chat-github">
             <span className="hero-chat-text">
               <FontAwesomeIcon icon={faGithub} className="mr-2" />깃허브 보기
             </span>
           </div>
-
           <img
             className="hero-person-photo"
             src={personPhoto[0]}

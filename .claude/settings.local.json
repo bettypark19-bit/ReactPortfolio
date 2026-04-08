@@ -8,7 +8,15 @@
       "Bash(npm run:*)",
       "Bash(node:*)",
       "Bash(grep -o 'person[^\"` ,\\)]*' dist/assets/index-BL6ALeuf.js)",
-      "WebFetch(domain:www.figma.com)"
+      "WebFetch(domain:www.figma.com)",
+      "Bash(ls -la C:/Users/Administrator/Desktop/soobin/portfolio/public/images/*.png)",
+      "Bash(npx vite:*)",
+      "Bash(file C:/Users/Administrator/Desktop/soobin/portfolio/public/images/*.png)",
+      "Bash(python -c ':*)",
+      "Bash(mv other-works-4.png other-works-4.jpg)",
+      "Bash(mv other-works-5.png other-works-5.jpg)",
+      "Bash(mv other-works-6.png other-works-6.jpg)",
+      "Bash(mv other-works-7.png other-works-7.jpg)"
     ]
   }
 }

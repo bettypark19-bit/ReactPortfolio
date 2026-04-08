@@ -1,0 +1,16 @@
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <div className="navbar-logo">W</div>
+      <div className="navbar-links">
+        <a className="navbar-link" href="#about">About me</a>
+        <a className="navbar-link" href="#skills">Skills</a>
+        <a className="navbar-link" href="#projects">Works</a>
+        <a className="navbar-link" href="#other-works">Explorations</a>
+      </div>
+      <button className="navbar-connect-btn">Connect!</button>
+    </nav>
+  );
+}
+
+export default Navbar;

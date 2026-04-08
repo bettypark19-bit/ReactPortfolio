@@ -1,16 +1,43 @@
-/* theme.css — 핵심적인 공통 변수만 유지 */
+/* theme.css — 프로젝트 전체 공통 CSS 변수 */
 
 :root {
-  /* Fonts - 가장 자주 쓰이는 두 핵심 폰트 */
+  /* 폰트 */
   --font-main: 'Instrument Sans', 'Pretendard', sans-serif;
   --font-accent: 'LeferiPoint-BlackA', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  --font-mono: 'Leferi Base Type', monospace;
 
-  /* Colors - 프로젝트 전체의 톤앤매너를 결정하는 3가지 핵심 색상 */
-  --color-primary: #93cbd8;   /* 메인 배경색 */
+  /* 핵심 색상 */
+  --color-primary: #f0f9ff;   /* 메인 배경색 (sky-50) */
   --color-text-main: #100a27; /* 메인 텍스트색 */
-  --color-accent: #018abe;    /* 포인트 블루 */
+  --color-accent: #3b82f6;    /* 포인트 블루 (blue-500) */
 
-  /* 기타 수치나 보조 색상은 각 CSS에서 직접 관리하여 난잡함을 방지합니다. */
+  /* 보조 색상 */
+  --color-white: #ffffff;
+  --color-pink: #ffb8d1;          /* 히어로 장식 원 */
+  --color-blue-muted: #6eb3c9;    /* About 포인트 블루 */
+  --color-blue-200: #bfdbfe;      /* 프로젝트 카드 번호 색상 (blue-200) */
+
+  /* 텍스트 보조 */
+  --color-text-secondary: #444444; /* 본문 보조 텍스트 */
+  --color-text-muted: #666666;     /* 흐린 레이블 텍스트 */
+
+  /* 배경 보조 */
+  --color-bg-tag: #f4f4f4;         /* 태그/필 배경 */
+  --color-bg-placeholder: #eeeeee; /* 이미지 플레이스홀더 */
+
+  /* 테두리 */
+  --color-border: #e0e0e0;
+
+  /* 그래디언트 — 네비 Connect 버튼 */
+  --gradient-connect-from: #d6e7ee;
+  --gradient-connect-to: #014478;
+
+  /* 그림자 */
+  --shadow-navbar: 0 8px 32px rgba(0, 0, 0, 0.14);
+  --shadow-bubble: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+  /* 반투명 */
+  --color-navbar-bg: rgba(255, 255, 255, 0.75);
 }
 
 html {

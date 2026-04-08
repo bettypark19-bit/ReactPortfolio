@@ -102,7 +102,7 @@ function Projects() {
       <div className="projects-header">
         <h2 className="projects-title">{'Projects\n/Case Studies'}</h2>
         <button className="projects-see-all">
-          <span className="t-white">See all Cases &nbsp;↗</span>
+          <span>See all Cases &nbsp;↗</span>
         </button>
       </div>
       <ProjectCards />

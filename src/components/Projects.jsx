@@ -16,6 +16,10 @@ const projects = [
     desc: "Covivant is a roommate finder app designed to make the process of finding a compatible and trustworthy roommate easier, safer, and more social.",
     image: projectImgs[0],
     alt: "VODA OTT 플랫폼",
+    links: [
+      { label: "기획서 보러가기", url: "#" },
+      { label: "깃허브 보러가기", url: "#" },
+    ],
   },
   {
     id: 2,
@@ -27,6 +31,10 @@ const projects = [
     desc: "A solution for conducting assessments & competency tests independently with a format that is transparent, accurate and easily accessible.",
     image: projectImgs[1],
     alt: "Airbnb 리디자인 & 홍보 영상",
+    links: [
+      { label: "기획서 보러가기", url: "#" },
+      { label: "깃허브 보러가기", url: "#" },
+    ],
   },
   {
     id: 3,
@@ -38,6 +46,9 @@ const projects = [
     desc: "BTW Academy is a tutoring center that prepares students for entrance exams and interviews at Indonesia's top State Universities and Service Academies.",
     image: projectImgs[2],
     alt: "국회도서관",
+    links: [
+      { label: "기획서 보러가기", url: "#" },
+    ],
   },
   {
     id: 4,
@@ -49,6 +60,10 @@ const projects = [
     desc: "BTW Academy is a tutoring center that prepares students for entrance exams and interviews at Indonesia's top State Universities and Service Academies.",
     image: projectImgs[3],
     alt: "하루알 광고영상",
+    links: [
+      { label: "기획서 보러가기", url: "#" },
+      { label: "깃허브 보러가기", url: "#" },
+    ],
   },
 ];
 
@@ -118,6 +133,17 @@ function ProjectCards() {
           </div>
           <div className="project-card-image">
             <img src={proj.image} alt={proj.alt} loading="lazy" />
+            <div className="project-card-links">
+              {proj.links && proj.links.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  className="project-link-btn"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       ))}

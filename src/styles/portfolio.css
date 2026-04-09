@@ -91,7 +91,7 @@ body {
   border-radius: 1600px;
   border: none;
   cursor: pointer;
-  background: linear-gradient(90deg, var(--gradient-connect-from) 5.6%, var(--gradient-connect-to) 105.61%);
+  background: var(--color-accent);
   color: var(--color-white);
   font-family: var(--font-main);
   font-weight: 500;
@@ -263,7 +263,7 @@ body {
 }
 
 .about-title {
-  font-family: var(--font-accent);
+  font-family: var(--font-mono);
   font-weight: normal;
   font-size: 80px;
   margin-bottom: 10px;
@@ -406,7 +406,7 @@ body {
 }
 
 .skills-title {
-  font-family: var(--font-accent);
+  font-family: var(--font-mono);
   font-weight: normal;
   font-size: 80px;
   font-weight: 900;
@@ -515,7 +515,7 @@ body {
 
 .projects-title {
   color: var(--color-blue-300);
-  font-family: var(--font-accent);
+  font-family: var(--font-mono);
   font-weight: normal;
   font-size: 80px;
   font-weight: 900;
@@ -721,13 +721,61 @@ body {
 
 .other-works-title {
   color: var(--color-blue-300);
-  font-family: var(--font-accent);
+  font-family: var(--font-mono);
   font-weight: normal;
   font-size: 80px;
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 32px;
+}
+
+.other-works-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 18px;
+  height: 48px;
+  border: none;
+  border-radius: 100px;
+  background: var(--color-white);
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent);
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-btn:hover {
+  background: var(--color-blue-200);
+  color: var(--color-white);
+}
+
+.tab-btn.active {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.tab-icon {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.tab-label {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
 .explor-component {

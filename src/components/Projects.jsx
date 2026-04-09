@@ -9,11 +9,11 @@ const projects = [
   {
     id: 1,
     title: "VODA OTT 플랫폼 & 영상",
-    tags: ["Mobile App", "Case Study", "UI/UX Design"],
-    period: "2023.09 - 2023.12",
-    contribution: "100% (기획, 디자인, 영상 제작)",
-    media: "Mobile App / Web",
-    desc: "Covivant is a roommate finder app designed to make the process of finding a compatible and trustworthy roommate easier, safer, and more social.",
+    tags: ["Figma", "Stitch", "Claude cli"],
+    period: "2026.03.24 - 2026.04.03 (주말 제외 총 9일)",
+    contribution: "30% (기획, 디자인, 코딩)",
+    media: "Web",
+    desc: "4인 팀 프로젝트로 진행한 OTT 서비스 VODA입니다. TMDB와 생성형 AI를 결합해 무드 기반 큐레이션과 챗봇 기능을 구현했습니다. 디자인 시스템을 코드 단계까지 정밀하게 동기화하며 디자인과 개발의 간극을 줄이는 프론트엔드 실무 역량을 발휘했습니다.",
     image: projectImgs[0],
     alt: "VODA OTT 플랫폼",
     links: [

@@ -452,6 +452,51 @@ body {
   border-color: var(--color-primary);
 }
 
+/* 스킬바 (원형 차트) */
+.skillbar-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skillbar-inner svg {
+  width: 100%;
+  max-width: 220px;
+}
+
+.skillbar-inner circle {
+  fill: none;
+  stroke-width: 3;
+  stroke: var(--color-border);
+}
+
+.skillbar-inner path {
+  fill: transparent;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke: var(--color-blue-200);
+}
+
+.skillbar-inner text {
+  dominant-baseline: central;
+  text-anchor: middle;
+  font-size: 6px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  fill: var(--color-blue-300);
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.skillbar-inner p {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-secondary);
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+
 /* ============================================
    PROJECTS SECTION
    ============================================ */
@@ -484,13 +529,13 @@ body {
 
 .projects-see-all {
   background: none;
-  border: 2px solid var(--color-blue-200);
+  border: 2px solid var(--color-blue-300);
   padding: 12px 24px;
   border-radius: 100px;
   font-family: var(--font-main);
   font-size: 18px;
   font-weight: 600;
-  color: var(--color-blue-200);
+  color: var(--color-blue-300);
   cursor: pointer;
   transition: all 0.2s;
 }

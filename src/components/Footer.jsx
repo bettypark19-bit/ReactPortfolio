@@ -49,69 +49,60 @@ function Footer() {
       const lastChar = allChars[allChars.length - 1];
       if (lastChar) gsap.set(lastChar, { visibility: 'hidden' });
 
-      const DOT = 24; // dot 크기(px) = "1em"
-      const D   = 6;  // 총 duration (초, 원본과 동일)
+      // ── 상수 (CSS padding-top: 120px 기준) ──────────────────
+      const DOT      = 24;   // 도트 크기(px)
+      const PAD_TOP  = 120;  // .footer-title-wrapper padding-top
+      const DOT_Y0   = 10;   // wrapper 상단에서 도트 초기 top (px)
+      // 도트 하단이 텍스트 상단에 정확히 닿는 y 변위 = 바운스 '바닥'
+      const FLOOR_Y  = PAD_TOP - DOT_Y0 - DOT; // 120 - 10 - 24 = 86px
 
-      // 위치 계산: dot 시작 위치 = title 중앙 (원본 grid 중앙과 동일 개념)
+      // ── 위치 계산 ───────────────────────────────────────────
       const wrapperRect = wrapperEl.getBoundingClientRect();
-      const titleRect   = titleEl.getBoundingClientRect();
       const lastRect    = lastChar ? lastChar.getBoundingClientRect() : null;
+      const midLeft     = (wrapperRect.width - DOT) / 2; // 수평 중앙
 
-      const startLeft = (titleRect.left  - wrapperRect.left) + (titleRect.width  - DOT) / 2;
-      const startTop  = (titleRect.top   - wrapperRect.top)  + (titleRect.height - DOT) / 2;
-
-      // dot-inner 슬라이드 목표 (원본 4.4em 비례로 계산)
-      const endX      = lastRect ? (lastRect.left - wrapperRect.left) - startLeft : 0;
-      const overX     = endX * (6   / 4.4); // 원본 6em 오버슈트
-      const pullX     = endX * (4.3 / 4.4); // 원본 4.3em 풀백
+      // '.' 최종 위치 (wrapper 기준, dot top 기준)
+      const endX = lastRect ? (lastRect.left - wrapperRect.left) - midLeft  : 0;
+      const endY = lastRect ? (lastRect.top  - wrapperRect.top)  - DOT_Y0   : FLOOR_Y;
 
       const bgWave    = dotEl.querySelector('.footer-dot-wave.bg');
       const fgWave    = dotEl.querySelector('.footer-dot-wave.fg');
       const bonkChars = line2Chars.slice(-3, -1); // '니', '다'
 
-      // 초기 설정: title 중앙에 scale:3 으로 등장 (원본과 동일)
-      gsap.set(dotEl,      { left: startLeft, top: startTop, x: 0, y: 0, opacity: 0, scale: 3, scaleY: 1, transformOrigin: 'center center' });
-      gsap.set(dotInnerEl, { x: 0, y: 0 });
+      // ── 초기 설정 ────────────────────────────────────────────
+      gsap.set(dotEl,      { top: DOT_Y0, left: midLeft, x: 0, y: 0, opacity: 0, scale: 2.5, transformOrigin: 'center center' });
+      gsap.set(dotInnerEl, { x: 0 });
 
-      // ── @keyframes dot 재현 (원본 % → D 기준 초 변환) ──────
+      // ── 도트 바운스 타임라인 ─────────────────────────────────
       const dotTl = gsap.timeline();
 
+      // 등장 + 첫 낙하 (scale 2.5→1, 텍스트 상단 바닥까지)
+      dotTl.to(dotEl, { opacity: 1, scale: 1, y: FLOOR_Y, duration: 0.40, ease: 'power2.in' });
+
+      // 감쇠 바운스 (scaleY 없음 → 완전한 구 유지)
       dotTl
-        // 10%: 등장 (scale:3 유지)
-        .to(dotEl, { opacity: 1,                           duration: D * 0.10, ease: 'none'        })
-        // 15%: squish 준비 (scale:3 상태에서 y:+1.5em, scaleY:1.5)
-        .to(dotEl, { y: DOT * 1.5,  scaleY: 1.5,          duration: D * 0.05, ease: 'power2.inOut' })
-        // 20%: 첫 점프 (scale 3→1, y: -300% = -3em)
-        .to(dotEl, { y: -(DOT * 3), scale: 1, scaleY: 1,  duration: D * 0.05, ease: 'power2.out'  })
-        // 30%: 1차 착지 (y: +1em = ground, squash)
-        .to(dotEl, { y:  DOT,       scaleY: 0.5,           duration: D * 0.10, ease: 'power2.in'   })
-        // 40%: 2차 점프 (y: -400% = -4em)
-        .to(dotEl, { y: -(DOT * 4), scaleY: 1,             duration: D * 0.10, ease: 'power2.out'  })
-        // 50%: 하강 (y: -1em)
-        .to(dotEl, { y:  -DOT,                              duration: D * 0.10, ease: 'power2.in'   })
-        // 53%: 소 바운스 (y: -300%)
-        .to(dotEl, { y: -(DOT * 3),                         duration: D * 0.03, ease: 'power2.out'  })
-        // 56%: (y: -1em)
-        .to(dotEl, { y:  -DOT,                              duration: D * 0.03, ease: 'power2.in'   })
-        // 59%: (y: -200%)
-        .to(dotEl, { y: -(DOT * 2),                         duration: D * 0.03, ease: 'power2.out'  })
-        // 62%: 최종 착지 (y: +1em = ground = '.'의 y 위치)
-        .to(dotEl, { y:  DOT,                               duration: D * 0.03, ease: 'power2.in'   });
+        .to(dotEl, { y: FLOOR_Y - 70, duration: 0.22, ease: 'power2.out' }) // 1차 반등
+        .to(dotEl, { y: FLOOR_Y,      duration: 0.20, ease: 'power2.in'  }) // 착지
+        .to(dotEl, { y: FLOOR_Y - 42, duration: 0.18, ease: 'power2.out' }) // 2차 반등
+        .to(dotEl, { y: FLOOR_Y,      duration: 0.16, ease: 'power2.in'  }) // 착지
+        .to(dotEl, { y: FLOOR_Y - 18, duration: 0.13, ease: 'power2.out' }) // 3차 반등
+        .to(dotEl, { y: FLOOR_Y,      duration: 0.12, ease: 'power2.in'  }) // 착지
+        .to(dotEl, { y: FLOOR_Y -  6, duration: 0.08, ease: 'power2.out' }) // 4차 (미세)
+        .to(dotEl, { y: FLOOR_Y,      duration: 0.08, ease: 'power2.in'  }); // 정착
 
-      // ── @keyframes dot-inner 재현 (절대 시간 위치로 삽입) ──
+      // '.' 위치로 대각 이동 (y: 텍스트 하단까지, x: dot-inner 슬라이드)
       dotTl
-        .to(dotInnerEl, { x: overX, duration: D * 0.10, ease: 'power2.in'    }, D * 0.70)
-        .to(dotInnerEl, { x: pullX, duration: D * 0.10, ease: 'power2.inOut' })
-        .to(dotInnerEl, { x: endX,  duration: D * 0.03, ease: 'power2.inOut' });
+        .to(dotEl,      { y: endY, duration: 0.55, ease: 'power3.inOut' }, '+=0.06')
+        .to(dotInnerEl, { x: endX, duration: 0.55, ease: 'power3.inOut' }, '<');
 
-      // bonk (80%)
-      dotTl.to(bonkChars, { x: -14, duration: D * 0.02, yoyo: true, repeat: 1 }, D * 0.80);
+      // bonk
+      dotTl.to(bonkChars, { x: -12, duration: 0.10, yoyo: true, repeat: 1, ease: 'power2.out' }, '-=0.14');
 
-      // wave (시작부터 0.25*D 동안 채워짐, 원본과 동일)
-      if (bgWave) dotTl.fromTo(bgWave, { y: '100%', x:  '110%' }, { y: '30%', x: '0%', duration: D * 0.25 * 0.95, ease: 'power2.inOut' }, 0);
-      if (fgWave) dotTl.fromTo(fgWave, { y: '100%', x: '-110%' }, { y: '30%', x: '0%', duration: D * 0.25,         ease: 'power2.inOut' }, 0);
+      // 웨이브 채우기 (착지 시점부터 시작, y: '-10%' 이하 → 도트 완전히 채움)
+      if (bgWave) dotTl.fromTo(bgWave, { y: '100%', x:  '110%' }, { y: '-10%', x: '0%', duration: 1.4, ease: 'power2.inOut' }, 0.35);
+      if (fgWave) dotTl.fromTo(fgWave, { y: '100%', x: '-110%' }, { y: '-10%', x: '0%', duration: 1.6, ease: 'power2.inOut' }, 0.20);
 
-      // ── 글자 등장 + 도트 동시 실행 ──────────────────────────
+      // ── 글자 등장 + 도트 병렬 실행 ──────────────────────────
       gsap.timeline()
         .fromTo(line1Chars, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.04, ease: 'power2.out' }, 0)
         .fromTo(line2Chars, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.04, ease: 'power2.out' }, 0.5)
@@ -148,10 +139,10 @@ function Footer() {
               <div className="footer-dot" ref={dotRef}>
                 <div className="footer-dot-inner" ref={dotInnerRef}>
                   <svg className="footer-dot-wave bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-                    <path d="M799.09 90s11.04 0 0 0c-80.714 0-79.621-90-200-90-120.377 0-118.607 90-200 90-81.391 0-81.215-90-200-90C80.308 0 78.68 89.29-.91 90c-6.946.062 0 0 0 0v510h800V90z" />
+                    <path d="M799.09 90s11.04 0 0 0c-80.714 0-79.621-90-200-90-120.377 0-118.607 90-200 90-81.391 0-81.215-90-200-90C80.308 0 78.68 89.29-.91 90c-6.946.062 0 0 0 0v710h800V90z" />
                   </svg>
                   <svg className="footer-dot-wave fg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-                    <path d="M799.09 90s11.04 0 0 0c-80.714 0-79.621-90-200-90-120.377 0-118.607 90-200 90-81.391 0-81.215-90-200-90C80.308 0 78.68 89.29-.91 90c-6.946.062 0 0 0 0v510h800V90z" />
+                    <path d="M799.09 90s11.04 0 0 0c-80.714 0-79.621-90-200-90-120.377 0-118.607 90-200 90-81.391 0-81.215-90-200-90C80.308 0 78.68 89.29-.91 90c-6.946.062 0 0 0 0v710h800V90z" />
                   </svg>
                 </div>
               </div>

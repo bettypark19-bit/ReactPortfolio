@@ -212,21 +212,21 @@ body {
 }
 
 .chat-hi {
-  top: 10%;
-  right: -80px;
+  top: 12%;
+  right: -70px;
   border-radius: 40px 40px 40px 4px;
   transform: rotate(8deg);
 }
 
 .chat-resume {
-  bottom: 25%;
+  bottom: 32%;
   left: -200px;
   border-radius: 40px 50px 4px 40px;
   transform: rotate(-5deg);
 }
 
 .chat-github {
-  bottom: 10%;
+  bottom: 20%;
   left: -150px;
   border-radius: 40px 50px 4px 40px;
   transform: rotate(4deg);
@@ -1012,6 +1012,7 @@ body {
   position: relative;
   overflow: visible;
   margin-bottom: 48px;
+  padding-top: 120px; /* 도트 바운스 전용 공간 (텍스트 상단 위) */
 }
 
 .footer-cta-title {

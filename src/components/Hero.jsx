@@ -19,8 +19,8 @@ function Hero() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.to('.blob', {
-        x: 'random(-300, 300)', // 이동 범위 더욱 확대
-        y: 'random(-300, 300)',
+        x: 'random(-300, 300)',
+        y: 'random(-150, 500)', // 아래쪽 범위 확대 → about 파임 gap 채움
         scale: 'random(0.6, 2.5)',
         rotation: 'random(-360, 360)',
         duration: 'random(8, 12)',

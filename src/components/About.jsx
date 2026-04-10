@@ -1,9 +1,73 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 import { personPhoto } from '../data/images';
 
+gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
+
+// 상단 좌우 border-radius(≈96px) 포함한 경로
+const down   = 'M0,150 Q0,0 150,0 C150,0 569,80 1139,80 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z';   // 약한 아래 파임
+const up     = 'M0,150 Q0,0 150,0 C150,0 569,-100 1139,-100 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z'; // 위쪽 반등
+const center = 'M0,150 Q0,0 150,0 C150,0 569,0 1139,0 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z';
+
 function About() {
+  const sectionRef = useRef(null);
+  const pathRef    = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const path    = pathRef.current;
+    if (!section || !path) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top bottom',
+        toggleActions: 'play pause resume reverse',
+        onEnter: (self) => {
+          const velocity  = Math.abs(self.getVelocity());
+          const variation = velocity / 5000;
+          const tl = gsap.timeline({ overwrite: true });
+
+          // 평평 → 약한 아래 파임 → 위쪽 반등 → 탄성 정착
+          tl.to(path, { morphSVG: down,   duration: 0.2, ease: 'power2.in'   })
+            .to(path, { morphSVG: up,     duration: 0.2, ease: 'power2.out'  })
+            .to(path, { morphSVG: center, duration: 1.5, ease: `elastic.out(${0.5 + variation}, 0.45)` });
+        },
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="about" id="about">
-      <div className="about-inner">
+    <section
+      className="about"
+      id="about"
+      ref={sectionRef}
+      style={{ position: 'relative', background: 'transparent', zIndex: 1 }}
+    >
+      {/* MorphSVG 바운스 애니메이션 — .about 섹션 배경 역할 */}
+      <svg
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 2278 683"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'block',
+          overflow: 'visible',
+          pointerEvents: 'none',
+        }}
+      >
+        <path ref={pathRef} fill="#ffffff" d={center} />
+      </svg>
+
+      <div className="about-inner" style={{ position: 'relative', zIndex: 1 }}>
         <h2 className="about-title">About Me</h2>
         <div className="about-hero">
           <div className="about-avatar-group">

@@ -17,7 +17,9 @@
       "Bash(mv other-works-5.png other-works-5.jpg)",
       "Bash(mv other-works-6.png other-works-6.jpg)",
       "Bash(mv other-works-7.png other-works-7.jpg)",
-      "WebFetch(domain:codepen.io)"
+      "WebFetch(domain:codepen.io)",
+      "WebFetch(domain:demos.gsap.com)",
+      "WebFetch(domain:cdpn.io)"
     ]
   }
 }

@@ -10,12 +10,13 @@
 
 이 파일은 프로젝트의 핵심 기술 스택, 코딩 컨벤션 및 작업 원칙을 정의합니다. 모든 작업은 이 가이드라인을 최우선으로 준수해야 합니다.
 
-## 1. 기술 스택 (Tech Stack)
-- **Framework:** React 19
-- **Build Tool:** Vite 7
-- **Routing:** React Router v7
-- **Styling:** Tailwind CSS v4
-- **Icons:** FontAwesome
+## 1. 기술 스택 (Tech Stack) — 2026년 3월 기준 최신 버전 유지
+- **Framework:** React 19.2.5
+- **Build Tool:** Vite 8.0.8
+- **Routing:** React Router 7.14.0 (`react-router` 패키지 사용)
+- **Styling:** Tailwind CSS 4.1.8
+- **Animation:** GSAP 3.14.2
+- **Icons:** FontAwesome 7.2.0 (`@fortawesome/react-fontawesome` 0.2.2)
 - **Fonts:**
   - LeferiBase: `https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-BoldA.woff`
   - Pretendard: `<script src="https://cdn.jsdelivr.net/npm/pretendard-std@1.3.9/subset.min.js"></script>`
@@ -32,6 +33,7 @@
 - **Language:**
   - 모든 설명, 코드 내 주석, 에러 메시지는 **한국어**로 작성
 - **jQuery 금지**
+- **react-router-dom 금지**
 
 ## 3. 핵심 규칙 (Core Rules)
 - **준수 사항:** 명시된 기술 스택 외의 라이브러리는 임의로 추가하지 않음

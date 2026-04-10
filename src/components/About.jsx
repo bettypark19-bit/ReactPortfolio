@@ -33,7 +33,7 @@ function About() {
           // 평평 → 약한 아래 파임 → 위쪽 반등 → 탄성 정착
           tl.to(path, { morphSVG: down,   duration: 0.2, ease: 'power2.in'   })
             .to(path, { morphSVG: up,     duration: 0.2, ease: 'power2.out'  })
-            .to(path, { morphSVG: center, duration: 1.5, ease: `elastic.out(${0.5 + variation}, 0.45)` });
+            .to(path, { morphSVG: center, duration: 1.5, ease: `elastic.out(${0.3 + variation}, 0.45)` });
         },
       });
     }, section);

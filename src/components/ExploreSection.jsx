@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import DetailModal from './DetailModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGrip, faPenNib, faScissors } from '@fortawesome/free-solid-svg-icons';
 import { otherWorksImgs } from '../data/images';
@@ -11,17 +12,19 @@ const TABS = [
 ];
 
 const otherWorksItems = [
-  { id: 1, image: otherWorksImgs[0], label: '진진진 리플렛',  category: 'design' },
-  { id: 2, image: otherWorksImgs[1], label: '기장군 캐릭터',  category: 'design' },
-  { id: 3, image: otherWorksImgs[2], label: '카드 뉴스',      category: 'design' },
-  { id: 4, image: otherWorksImgs[3], label: '북커버',         category: 'design' },
-  { id: 5, image: otherWorksImgs[4], label: 'Sway seat',      category: 'craft'  },
-  { id: 6, image: otherWorksImgs[5], label: 'Bird',           category: 'craft'  },
-  { id: 7, image: otherWorksImgs[6], label: 'In to the Sea',  category: 'craft'  },
+  { id: 1, image: otherWorksImgs[0], label: '진진진 리플렛',  category: 'design', slug: 'jin-jin-jin'      },
+  { id: 2, image: otherWorksImgs[1], label: '기장군 캐릭터',  category: 'design', slug: 'gijang-character' },
+  { id: 3, image: otherWorksImgs[2], label: '카드 뉴스',      category: 'design', slug: 'card-news'        },
+  { id: 4, image: otherWorksImgs[3], label: '북커버',         category: 'design', slug: 'book-cover'       },
+  { id: 5, image: otherWorksImgs[4], label: 'Sway seat',      category: 'craft',  slug: 'sway-seat'        },
+  { id: 6, image: otherWorksImgs[5], label: 'Bird',           category: 'craft',  slug: 'bird'             },
+  { id: 7, image: otherWorksImgs[6], label: 'In to the Sea',  category: 'craft',  slug: 'into-the-sea'     },
 ];
 
 function ExploreSection() {
-  const [activeTab, setActiveTab] = useState('All');
+  const [activeTab,  setActiveTab]  = useState('All');
+  const [modalItem,  setModalItem]  = useState(null);
+  const pointerDown = useRef({ x: 0, y: 0 });
 
   const sectionRef    = useRef(null);
   const trackRef      = useRef(null);
@@ -196,6 +199,8 @@ function ExploreSection() {
   }, []);
 
   return (
+    <>
+    {modalItem && <DetailModal item={modalItem} onClose={() => setModalItem(null)} />}
     <section className="other-works" id="other-works" ref={sectionRef}>
       <div className="explor-sticky-wrapper">
         <h2 className="other-works-title">My Other Works!</h2>
@@ -225,6 +230,12 @@ function ExploreSection() {
                     className="other-works-item-inner"
                     onMouseEnter={(e) => gsap.to(e.currentTarget.querySelector('img'), { scale: 1.1, duration: 0.4, ease: 'power2.out' })}
                     onMouseLeave={(e) => gsap.to(e.currentTarget.querySelector('img'), { scale: 1,   duration: 0.4, ease: 'power2.out' })}
+                    onPointerDown={(e) => { pointerDown.current = { x: e.clientX, y: e.clientY }; }}
+                    onPointerUp={(e) => {
+                      const dx = Math.abs(e.clientX - pointerDown.current.x);
+                      const dy = Math.abs(e.clientY - pointerDown.current.y);
+                      if (dx < 5 && dy < 5) setModalItem(item);
+                    }}
                   >
                     <img src={item.image} alt={item.label} loading="lazy" />
                     <div className="other-works-overlay">
@@ -238,6 +249,7 @@ function ExploreSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

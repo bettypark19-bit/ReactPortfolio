@@ -31,7 +31,7 @@ function Footer() {
       </div>
 
       <div className="footer-copyright">
-        Copyright © 2025 – Made with ❤︎ by 박수빈
+        Copyright © 2026 by 박수빈
       </div>
     </footer>
   );

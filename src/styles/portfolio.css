@@ -527,24 +527,6 @@ body {
   color: var(--color-white);
 }
 
-.projects-see-all {
-  background: none;
-  border: 2px solid var(--color-blue-300);
-  padding: 12px 24px;
-  border-radius: 100px;
-  font-family: var(--font-main);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-blue-300);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.projects-see-all:hover {
-  background: var(--color-accent);
-  color: var(--color-white);
-}
-
 /* Project Cards Scroll Container */
 .project-cards-scroll {
   display: flex;
@@ -660,8 +642,8 @@ body {
 
 /* 프로젝트 버튼 컨테이너 - 하단 중앙 정렬 유지 */
 .project-card-links {
-  position: absolute;
-  bottom: 32px;
+  position: relative;
+  bottom: -32px;
   left: 0;
   width: 100%;
   display: flex;
@@ -674,12 +656,9 @@ body {
 /* 개별 버튼 스타일 - 투명도가 흐릿한 백색(Glassmorphism) */
 .project-link-btn {
   padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.4); /* 흐릿한 백색 배경 */
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--color-blue-300); 
   border-radius: 100px;
-  color: var(--color-white); /* 어두운 글자색 */
+  color: var(--color-white);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -692,6 +671,7 @@ body {
 
 .project-link-btn:hover {
   background: var(--color-accent);
+  color: var(--color-white);
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
@@ -727,7 +707,6 @@ body {
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 32px;
 }
 
 .other-works-tabs {

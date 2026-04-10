@@ -130,9 +130,6 @@ function ProjectCards() {
             </div>
 
             <p className="project-card-desc">{proj.desc}</p>
-          </div>
-          <div className="project-card-image">
-            <img src={proj.image} alt={proj.alt} loading="lazy" />
             <div className="project-card-links">
               {proj.links && proj.links.map((link, idx) => (
                 <a
@@ -145,6 +142,9 @@ function ProjectCards() {
               ))}
             </div>
           </div>
+          <div className="project-card-image">
+            <img src={proj.image} alt={proj.alt} loading="lazy" />
+          </div>
         </div>
       ))}
     </div>
@@ -155,10 +155,7 @@ function Projects() {
   return (
     <section className="projects" id="projects">
       <div className="projects-header">
-        <h2 className="projects-title">{"Projects\n/Case Studies"}</h2>
-        <button className="projects-see-all">
-          <span>See all Cases &nbsp;↗</span>
-        </button>
+        <h2 className="projects-title">{"Projects"}</h2>
       </div>
       <ProjectCards />
     </section>

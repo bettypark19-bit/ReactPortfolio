@@ -19,9 +19,9 @@ const certs = [
 
 const skillData = [
   [
-    { id: 's1', target: 19, label: 'alpha skill' },
-    { id: 's2', target: 62, label: 'beta skill'  },
-    { id: 's3', target: 32, label: 'gama skill'  },
+    { id: 's1', target: 90, label: 'HTML/CSS' },
+    { id: 's2', target: 90, label: 'Figma'  },
+    { id: 's3', target: 90, label: 'Adobe'  },
     { id: 's4', target: 45, label: 'delta skill' },
   ],
   [
@@ -87,7 +87,7 @@ function Skills() {
 
   return (
     <section className="skills" id="skills">
-      <h2 className="skills-title">Certification / Skills</h2>
+      <h2 className="skills-title">Skills</h2>
       {certs.map((cert) => (
         <div className="cert-block" key={cert.id}>
           <div className="cert-name">{cert.name}</div>
@@ -104,7 +104,7 @@ function Skills() {
                             <circle r="10" />
                             <path ref={(el) => (pathRefs.current[i] = el)} />
                           </g>
-                          <text ref={(el) => (textRefs.current[i] = el)} x="25" y="25">0%</text>
+                          <text ref={(el) => (textRefs.current[i] = el)} x="25" y="26">0%</text>
                         </svg>
                         <p>{sd.label}</p>
                       </div>

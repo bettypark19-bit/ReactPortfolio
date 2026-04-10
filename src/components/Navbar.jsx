@@ -5,8 +5,8 @@ function Navbar() {
       <div className="navbar-links">
         <a className="navbar-link" href="#about">About me</a>
         <a className="navbar-link" href="#skills">Skills</a>
-        <a className="navbar-link" href="#projects">Works</a>
-        <a className="navbar-link" href="#other-works">Explorations</a>
+        <a className="navbar-link" href="#projects">Projects</a>
+        <a className="navbar-link" href="#other-works">Works</a>
       </div>
       <button className="navbar-connect-btn">Connect!</button>
     </nav>

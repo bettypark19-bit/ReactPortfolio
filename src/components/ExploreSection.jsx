@@ -221,8 +221,15 @@ function ExploreSection() {
             <div className="other-card-track" ref={trackRef}>
               {filtered.map((item) => (
                 <div className="other-works-item" key={item.id}>
-                  <div className="other-works-item-inner">
+                  <div
+                    className="other-works-item-inner"
+                    onMouseEnter={(e) => gsap.to(e.currentTarget.querySelector('img'), { scale: 1.1, duration: 0.4, ease: 'power2.out' })}
+                    onMouseLeave={(e) => gsap.to(e.currentTarget.querySelector('img'), { scale: 1,   duration: 0.4, ease: 'power2.out' })}
+                  >
                     <img src={item.image} alt={item.label} loading="lazy" />
+                    <div className="other-works-overlay">
+                      <span className="other-works-label">{item.label}</span>
+                    </div>
                   </div>
                 </div>
               ))}

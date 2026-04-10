@@ -105,16 +105,26 @@ function Hero() {
           <div className="hero-chat-bubble chat-hi">
             <span className="hero-chat-text">Hi! I'm Soobin!</span>
           </div>
-          <div className="hero-chat-bubble chat-resume">
+          <a
+            href="https://drive.google.com/file/d/1vkh8npgRoHG-9nmffMqZOIhAJvtMCxeD/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-chat-bubble chat-resume"
+          >
             <span className="hero-chat-text">
               <FontAwesomeIcon icon={faFileLines} className="mr-2" />이력서 보기
             </span>
-          </div>
-          <div className="hero-chat-bubble chat-github">
+          </a>
+          <a
+            href="https://github.com/bettypark19-bit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-chat-bubble chat-github"
+          >
             <span className="hero-chat-text">
               <FontAwesomeIcon icon={faGithub} className="mr-2" />깃허브 보기
             </span>
-          </div>
+          </a>
           <img
             className="hero-person-photo"
             src={personPhoto[0]}

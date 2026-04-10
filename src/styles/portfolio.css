@@ -161,7 +161,7 @@ body {
 /* 이미지 및 말풍선 메인 영역: 정중앙 */
 .hero-main-area {
   position: absolute;
-  top: 55%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -177,10 +177,11 @@ body {
 }
 
 .hero-person-photo {
-  height: 780px; /* 크기 조정: 너무 크지 않게 */
+  height: 840px; /* 크기 조정: 너무 크지 않게 */
   width: auto;
   object-fit: contain;
   display: block;
+  margin-top: 60px;
 }
 
 /* Hero Chat Bubbles: 위치 정밀 조정 */
@@ -191,6 +192,15 @@ body {
   box-shadow: var(--shadow-bubble);
   z-index: 30;
   white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-chat-bubble:hover {
+  transform: scale(1.05) !important; /* 기존 rotate와 결합을 위해 scale만 추가하거나 rotate를 포함해야 할 수도 있음 */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .hero-chat-text {
@@ -965,6 +975,9 @@ body {
   margin-bottom: 48px;
 }
 
+/* ============================================
+   FOOTER
+   ============================================ */
 .footer {
   background-color: var(--color-primary);
   padding: 100px 96px 140px;
@@ -974,69 +987,119 @@ body {
   background: var(--color-white);
   border-radius: 80px;
   padding: 80px;
-  text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.footer-content-layout {
+  display: flex;
+  gap: 80px;
+  text-align: left;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.footer-info-side {
+  flex: 1;
+}
+
+.footer-form-side {
+  flex: 1.2;
+}
+
+/* 도트 애니메이션 래퍼 */
+.footer-title-wrapper {
+  position: relative;
+  overflow: visible;
+  margin-bottom: 48px;
 }
 
 .footer-cta-title {
   font-size: 48px;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 40px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  color: var(--color-text-main);
 }
 
-.footer-start-btn {
-  background: var(--color-text-main);
-  color: var(--color-white);
-  padding: 20px 48px;
-  border-radius: 100px;
-  font-size: 20px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s;
+/* 도트 요소 */
+.footer-dot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.footer-dot-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.footer-dot-inner > * {
+  grid-area: 1 / 1;
+}
+
+.footer-dot-wave {
+  width: 200%;
+  height: 200%;
+}
+
+.footer-dot-wave.fg {
+  fill: var(--color-accent);
+}
+
+.footer-dot-wave.bg {
+  fill: var(--color-text-main);
+}
+
+.footer-contact-details {
   margin-bottom: 60px;
 }
 
-.footer-start-btn:hover {
-  transform: scale(1.05);
-}
-
-.footer-collab-banner {
-  background: var(--color-bg-tag);
-  padding: 16px;
-  margin: 0 -80px 60px;
-}
-
-.footer-collab-text {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.footer-contact-row {
+.footer-contact-item {
+  margin-bottom: 24px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  text-align: left;
+  flex-direction: column;
 }
 
-.footer-contact-label,
+.footer-contact-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text-main);
+  opacity: 0.5;
+}
+
+.footer-contact-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a.footer-contact-value:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.footer-socials-block {
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-socials-label {
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   opacity: 0.5;
-}
-
-.footer-contact-email {
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: underline;
 }
 
 .footer-socials-list {
@@ -1047,7 +1110,94 @@ body {
 .footer-social-link {
   font-size: 18px;
   font-weight: 600;
+  color: var(--color-text-main);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer-social-link:hover {
+  opacity: 0.7;
+}
+
+/* Email Form Styles */
+.footer-email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.footer-form-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-left: 20px;
+}
+
+.footer-form-input,
+.footer-form-textarea {
+  width: 100%;
+  background: var(--color-blue-50);
+  border: 1px solid transparent;
+  padding: 18px 24px;
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: var(--color-text-main);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.footer-form-input {
+  border-radius: 100px;
+}
+
+.footer-form-textarea {
+  border-radius: 32px;
+  resize: none;
+}
+
+.footer-form-input:focus,
+.footer-form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.footer-submit-btn {
+  background: var(--color-blue-400);
+  color: var(--color-white);
+  padding: 20px 48px;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
   cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 10px;
+  align-self: center; /* Flexbox 내에서 가운데 정렬 */
+}
+
+.footer-submit-btn:hover {
+  transform: scale(1.05); /* 제자리에서 커지도록 수정 */
+  background: var(--color-blue-500);
+}
+
+.footer-collab-banner {
+  background: var(--color-bg-tag);
+  padding: 24px;
+  margin: 0 -80px -80px;
+  text-align: center;
+}
+
+.footer-collab-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-main);
 }
 
 .footer-copyright {
@@ -1137,6 +1287,8 @@ a, button, .link {
   .project-card     { flex-direction: column; padding: 20px; border-radius: 40px; }
   .project-card-image { width: 100%; height: 240px; margin-top: 32px; }
   .footer-cta-card  { padding: 40px; border-radius: 40px; }
+  .footer-content-layout { flex-direction: column; gap: 60px; }
   .footer-cta-title { font-size: 32px; }
-  .footer-contact-row { flex-direction: column; gap: 40px; }
+  .footer-contact-value { font-size: 20px; }
+  .footer-submit-btn { width: 100%; }
 }

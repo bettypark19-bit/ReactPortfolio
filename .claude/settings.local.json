@@ -43,7 +43,8 @@
       "Bash(sed -n '155,165p' src/styles/portfolio.css)",
       "Bash(sed -n '248,256p' src/styles/portfolio.css)",
       "Bash(sed -n '555,563p' src/styles/portfolio.css)",
-      "Bash(sed -n '782,790p' src/styles/portfolio.css)"
+      "Bash(sed -n '782,790p' src/styles/portfolio.css)",
+      "Bash(ls \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\soobin\\\\portfolio\\\\GEMINI\"*)"
     ]
   }
 }

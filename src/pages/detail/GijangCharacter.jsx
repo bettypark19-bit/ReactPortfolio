@@ -1,21 +1,21 @@
 function GijangCharacter() {
   return (
     <div className="detail-body">
-      <h1 className="detail-title">기장군 캐릭터</h1>
+      <h1 className="detail-title">기장군 관광 캐릭터</h1>
       <p className="detail-category">design</p>
       <div className="detail-meta">
         <div className="detail-meta-item period">
           <span className="detail-meta-label">작업 기간</span>
-          <span className="detail-meta-value">-</span>
+          <span className="detail-meta-value">2025.06</span>
         </div>
         <div className="detail-meta-item contribution">
           <span className="detail-meta-label">기여도</span>
-          <span className="detail-meta-value">-</span>
+          <span className="detail-meta-value">100%</span>
         </div>
         <div className="detail-meta-item tools">
           <span className="detail-meta-label">사용 툴</span>
           <div className="detail-meta-value">
-            <span className="detail-tool-tag">-</span>
+            <span className="detail-tool-tag">Adobe Illustrator</span>
           </div>
         </div>
       </div>
@@ -25,11 +25,28 @@ function GijangCharacter() {
 
       <div className="detail-gallery">
         <div className="detail-image-box">
-          {/* 이미지가 없을 때의 placeholder 혹은 실제 이미지 */}
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '14px' }}>이미지 준비 중</p>
+          <img src="../../public/images/detail/character/1.png" alt="" />
         </div>
         <div className="detail-image-box">
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '14px' }}>이미지 준비 중</p>
+          <img src="../../public/images/detail/character/2.png" alt="" />
+        </div>
+        <div className="detail-image-box">
+          <img src="../../public/images/detail/character/3.png" alt="" />
+        </div>
+        <div className="detail-image-box">
+          <img src="../../public/images/detail/character/4.png" alt="" />
+        </div>
+        <div className="detail-image-box">
+          <img src="../../public/images/detail/character/5.png" alt="" />
+        </div>
+        <div className="detail-image-box">
+          <img src="../../public/images/detail/character/6.jpg" alt="" />
+        </div>
+        <div className="detail-image-box">
+          <img src="../../public/images/detail/character/7.png" alt="" />
+        </div>
+        <div className="detail-image-box">
+          <img src="../../public/images/detail/character/8.png" alt="" />
         </div>
       </div>
     </div>

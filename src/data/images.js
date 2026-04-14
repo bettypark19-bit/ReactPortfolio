@@ -23,4 +23,5 @@ export const otherWorksImgs = [
   `${base}images/other-works-6.jpg`,
   `${base}images/other-works-7.jpg`,
   `${base}images/other-works-8.jpg`,
+  `${base}images/other-works-9.jpg`,
 ];

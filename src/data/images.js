@@ -18,8 +18,9 @@ export const otherWorksImgs = [
   `${base}images/other-works-1.png`,
   `${base}images/other-works-2.png`,
   `${base}images/other-works-3.png`,
-  `${base}images/other-works-4.jpg`,
+  `${base}images/other-works-4.png`,
   `${base}images/other-works-5.jpg`,
   `${base}images/other-works-6.jpg`,
   `${base}images/other-works-7.jpg`,
+  `${base}images/other-works-8.jpg`,
 ];

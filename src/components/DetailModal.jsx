@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
 
+import Wine           from '../pages/detail/Wine';
 import JinJinJin       from '../pages/detail/JinJinJin';
 import GijangCharacter from '../pages/detail/GijangCharacter';
 import CardNews        from '../pages/detail/CardNews';
@@ -12,6 +13,7 @@ import Bird            from '../pages/detail/Bird';
 import IntoTheSea      from '../pages/detail/IntoTheSea';
 
 const DETAIL_MAP = {
+  'Wine':             Wine,
   'jin-jin-jin':      JinJinJin,
   'gijang-character': GijangCharacter,
   'card-news':        CardNews,

@@ -15,7 +15,7 @@ const projects = [
     image: projectImgs[0],
     alt: "VODA OTT 플랫폼",
     links: [
-      { label: "기획서 보러가기", url: "https://www.figma.com/deck/do80QqW9GbP18GLTq3JqH0/VODA-%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C?node-id=3-107&t=e25RlAoJSRUPb9yZ-1" },
+      { label: "기획서 보러가기", url: "https://www.figma.com/deck/do80QqW9GbP18GLTq3JqH0" },
       { label: "깃허브 보러가기", url: "https://github.com/bettypark19-bit/VODA" },
       { label: "홈페이지 보러가기", url: "https://voda-r4s5.onrender.com/" },
     ],
@@ -31,7 +31,7 @@ const projects = [
     image: projectImgs[1],
     alt: "Airbnb 리디자인 & 홍보 영상",
     links: [
-      { label: "기획서 보러가기", url: "https://www.figma.com/deck/Us2JFP12MoXPCvH1WH11fi/RE-FINDED-%EA%B8%B0%ED%9A%8D%EC%84%9C?node-id=6-2808&t=xu5LtGoQz6RMdRfc-1" },
+      { label: "기획서 보러가기", url: "https://www.figma.com/deck/Us2JFP12MoXPCvH1WH11fi" },
       { label: "프로토타입 보러가기", url: "https://www.figma.com/proto/7JZuLEIXbyh0RaJV13shNC/%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84-%EB%A6%AC%EB%94%94%EC%9E%90%EC%9D%B8?node-id=146-2819&viewport=-1291%2C-550%2C0.18&t=z2eCzPInrDIcOfp7-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=146%3A2819&page-id=99%3A200" },
     ],
   },

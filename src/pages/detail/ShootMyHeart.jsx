@@ -20,13 +20,7 @@ function ShootMyHeart() {
           </div>
         </div>
       </div>
-      <div className="detail-description">
-        <p>
-          프로젝트의 목적과 주요 기능, 그리고 작업 과정에서의 고민 등을 이곳에
-          작성할 수 있습니다. 수빈님의 성실함과 전문성이 돋보이는 상세 설명을
-          추가해 보세요.
-        </p>
-      </div>
+
 
       <div className="detail-gallery">
         <div className="detail-image-box">

@@ -87,7 +87,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 48px;
-  padding: 8px 32px 16px;
+  padding: 21px 32px ;
   border-radius: 1600px;
   border: none;
   cursor: pointer;
@@ -97,10 +97,11 @@ body {
   font-weight: 500;
   font-size: 16px;
   transition: opacity 0.2s;
+  opacity: 0.8;
 }
 
 .navbar-connect-btn:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /* ============================================

@@ -19,7 +19,12 @@
       "Bash(mv other-works-7.png other-works-7.jpg)",
       "WebFetch(domain:codepen.io)",
       "WebFetch(domain:demos.gsap.com)",
-      "WebFetch(domain:cdpn.io)"
+      "WebFetch(domain:cdpn.io)",
+      "Bash(mv public/images/detail/book1 public/images/detail/shoot-my-heart)",
+      "Bash(mv public/images/detail/book2 public/images/detail/book-cover)",
+      "Bash(mv public/images/detail/card public/images/detail/card-news)",
+      "Bash(mv public/images/detail/character public/images/detail/gijang-character)",
+      "Bash(mv public/images/detail/jin public/images/detail/jin-jin-jin)"
     ]
   }
 }

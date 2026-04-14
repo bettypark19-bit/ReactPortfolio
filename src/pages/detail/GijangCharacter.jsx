@@ -25,28 +25,28 @@ function GijangCharacter() {
 
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/1.png" alt="" />
+          <img src="../../public/images/detail/gijang-character/1.png" alt="" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/2.png" alt="" />
+          <img src="../../public/images/detail/gijang-character/2.png" alt="" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/3.png" alt="" />
+          <img src="../../public/images/detail/gijang-character/3.png" alt="" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/4.png" alt="" />
+          <img src="../../public/images/detail/gijang-character/4.png" alt="" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/5.png" alt="" />
+          <img src="../../public/images/detail/gijang-character/5.png" alt="" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/6.jpg" alt="" />
+          <img src="../../public/images/detail/gijang-character/6.jpg" alt="" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/7.png" alt="" />
+          <img src="../../public/images/detail/gijang-character/7.png" alt="" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/character/8.png" alt="" />
+          <img src="../../public/images/detail/gijang-character/8.png" alt="" />
         </div>
       </div>
     </div>

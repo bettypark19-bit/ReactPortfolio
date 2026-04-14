@@ -8,16 +8,18 @@ import JinJinJin       from '../pages/detail/JinJinJin';
 import GijangCharacter from '../pages/detail/GijangCharacter';
 import CardNews        from '../pages/detail/CardNews';
 import BookCover       from '../pages/detail/BookCover';
+import ShootMyHeart   from '../pages/detail/ShootMyHeart';
 import SwaySeat        from '../pages/detail/SwaySeat';
 import Bird            from '../pages/detail/Bird';
 import IntoTheSea      from '../pages/detail/IntoTheSea';
 
 const DETAIL_MAP = {
-  'Wine':             Wine,
+  'wine':             Wine,
   'jin-jin-jin':      JinJinJin,
   'gijang-character': GijangCharacter,
   'card-news':        CardNews,
   'book-cover':       BookCover,
+  'shoot-my-heart':   ShootMyHeart,
   'sway-seat':        SwaySeat,
   'bird':             Bird,
   'into-the-sea':     IntoTheSea,

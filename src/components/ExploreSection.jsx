@@ -12,12 +12,12 @@ const TABS = [
 ];
 
 const otherWorksItems = [
-  { id: 1, image: otherWorksImgs[0], label: '주류박람회',  category: 'design', slug: 'Wine'      },
+  { id: 1, image: otherWorksImgs[0], label: '주류박람회',  category: 'design', slug: 'wine'      },
   { id: 2, image: otherWorksImgs[2], label: '기장군 캐릭터',  category: 'design', slug: 'gijang-character' },
   { id: 3, image: otherWorksImgs[1], label: '진진진 리플렛',  category: 'design', slug: 'jin-jin-jin'      },
   { id: 4, image: otherWorksImgs[3], label: '카드 뉴스',      category: 'design', slug: 'card-news'        },
   { id: 5, image: otherWorksImgs[4], label: '아가미 북커버',         category: 'design', slug: 'book-cover'       },
-  { id: 6, image: otherWorksImgs[5], label: '내 심장을 쏴라 북커버',         category: 'design', slug: 'book-cover'       },
+  { id: 6, image: otherWorksImgs[5], label: '내 심장을 쏴라 북커버',         category: 'design', slug: 'shoot-my-heart'   },
   { id: 7, image: otherWorksImgs[6], label: 'Sway seat',      category: 'craft',  slug: 'sway-seat'        },
   { id: 8, image: otherWorksImgs[7], label: 'Bird',           category: 'craft',  slug: 'bird'             },
   { id: 9, image: otherWorksImgs[8], label: 'In to the Sea',  category: 'craft',  slug: 'into-the-sea'     },

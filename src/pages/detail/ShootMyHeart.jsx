@@ -1,7 +1,7 @@
-function JinJinJin() {
+function ShootMyHeart() {
   return (
     <div className="detail-body">
-      <h1 className="detail-title">진진진 리플렛</h1>
+      <h1 className="detail-title">내 심장을 쏴라 북커버</h1>
       <p className="detail-category">design</p>
       <div className="detail-meta">
         <div className="detail-meta-item period">
@@ -21,18 +21,22 @@ function JinJinJin() {
         </div>
       </div>
       <div className="detail-description">
-        <p>프로젝트의 목적과 주요 기능, 그리고 작업 과정에서의 고민 등을 이곳에 작성할 수 있습니다. 수빈님의 성실함과 전문성이 돋보이는 상세 설명을 추가해 보세요.</p>
+        <p>
+          프로젝트의 목적과 주요 기능, 그리고 작업 과정에서의 고민 등을 이곳에
+          작성할 수 있습니다. 수빈님의 성실함과 전문성이 돋보이는 상세 설명을
+          추가해 보세요.
+        </p>
       </div>
 
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="../../public/images/detail/jin-jin-jin/jin-1.png" alt="" />
-        </div>        
+          <img src="/images/detail/shoot-my-heart/1.png" alt="내 심장을 쏴라 북커버 1" />
+        </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/jin-jin-jin/jin-2.png" alt="" />
-        </div>        
+          <img src="/images/detail/shoot-my-heart/2.png" alt="내 심장을 쏴라 북커버 2" />
+        </div>
       </div>
     </div>
   );
 }
-export default JinJinJin;
+export default ShootMyHeart;

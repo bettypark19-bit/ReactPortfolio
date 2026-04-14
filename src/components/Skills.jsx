@@ -20,15 +20,15 @@ const certs = [
 const skillData = [
   [
     { id: 's1', target: 90, label: 'HTML/CSS' },
-    { id: 's2', target: 90, label: 'Figma'  },
-    { id: 's3', target: 90, label: 'Adobe'  },
-    { id: 's4', target: 45, label: 'delta skill' },
+    { id: 's2', target: 80, label: 'React'  },
+    { id: 's3', target: 70, label: 'Python'  },
+    { id: 's4', target: 80, label: 'Github' },
   ],
   [
-    { id: 's5', target: 78, label: 'epsilon skill' },
-    { id: 's6', target: 55, label: 'zeta skill'    },
-    { id: 's7', target: 40, label: 'eta skill'     },
-    { id: 's8', target: 88, label: 'theta skill'   },
+    { id: 's5', target: 95, label: 'Figma' },
+    { id: 's6', target: 90, label: 'Adobe PS, Ai'    },
+    { id: 's7', target: 70, label: 'Adobe Pr, Ae'     },
+    { id: 's8', target: 80, label: 'Generative AI'   },
   ],
 ];
 

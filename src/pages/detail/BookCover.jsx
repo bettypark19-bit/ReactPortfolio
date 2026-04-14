@@ -21,13 +21,12 @@ function BookCover() {
         </div>
       </div>
 
-
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="/images/detail/book-cover/1.png" alt="아가미 북커버 1" />
+          <img src="/images/detail/book-cover/1.webp" alt="아가미 북커버 1" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="/images/detail/book-cover/2.png" alt="아가미 북커버 2" />
+          <img src="/images/detail/book-cover/2.webp" alt="아가미 북커버 2" loading="lazy" />
         </div>
       </div>
     </div>

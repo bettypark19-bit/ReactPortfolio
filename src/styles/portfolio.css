@@ -156,7 +156,6 @@ body {
 
 .split-char {
   display: inline-block;
-  will-change: transform;
 }
 
 /* 이미지 및 말풍선 메인 영역: 정중앙 */

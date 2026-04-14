@@ -4,8 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 import { personPhoto } from '../data/images';
 
-gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
-
 // 상단 좌우 border-radius(≈96px) 포함한 경로
 const down   = 'M0,150 Q0,0 150,0 C150,0 569,80 1139,80 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z';   // 약한 아래 파임
 const up     = 'M0,150 Q0,0 150,0 C150,0 569,-100 1139,-100 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z'; // 위쪽 반등

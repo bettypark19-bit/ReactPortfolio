@@ -8,7 +8,7 @@ function Navbar() {
         <a className="navbar-link" href="#projects">Projects</a>
         <a className="navbar-link" href="#other-works">Works</a>
       </div>
-      <button className="navbar-connect-btn">Connect!</button>
+      <button className="navbar-connect-btn" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>Connect!</button>
     </nav>
   );
 }

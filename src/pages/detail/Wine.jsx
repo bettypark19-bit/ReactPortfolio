@@ -19,31 +19,28 @@ function Wine() {
           </div>
         </div>
       </div>
-      {/* <div className="detail-description">
-        <p>프로젝트의 목적과 주요 기능, 그리고 작업 과정에서의 고민 등을 이곳에 작성할 수 있습니다. 수빈님의 성실함과 전문성이 돋보이는 상세 설명을 추가해 보세요.</p>
-      </div> */}
 
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="../../public/images/detail/wine/wine-1.png" alt="" />
+          <img src="/images/detail/wine/wine-1.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/wine/wine-2.png" alt="" />
+          <img src="/images/detail/wine/wine-2.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/wine/wine-3.png" alt="" />
+          <img src="/images/detail/wine/wine-3.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/wine/wine-4.png" alt="" />
+          <img src="/images/detail/wine/wine-4.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/wine/wine-5.png" alt="" />
+          <img src="/images/detail/wine/wine-5.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/wine/wine-6.png" alt="" />
+          <img src="/images/detail/wine/wine-6.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/wine/wine-7.png" alt="" />
+          <img src="/images/detail/wine/wine-7.webp" alt="" loading="lazy" />
         </div>
       </div>
     </div>

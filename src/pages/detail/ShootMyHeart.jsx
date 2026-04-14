@@ -30,10 +30,10 @@ function ShootMyHeart() {
 
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="/images/detail/shoot-my-heart/1.png" alt="내 심장을 쏴라 북커버 1" />
+          <img src="/images/detail/shoot-my-heart/1.webp" alt="내 심장을 쏴라 북커버 1" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="/images/detail/shoot-my-heart/2.png" alt="내 심장을 쏴라 북커버 2" />
+          <img src="/images/detail/shoot-my-heart/2.webp" alt="내 심장을 쏴라 북커버 2" loading="lazy" />
         </div>
       </div>
     </div>

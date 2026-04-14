@@ -26,11 +26,11 @@ function JinJinJin() {
 
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="../../public/images/detail/jin-jin-jin/jin-1.png" alt="" />
-        </div>        
+          <img src="/images/detail/jin-jin-jin/jin-1.webp" alt="" loading="lazy" />
+        </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/jin-jin-jin/jin-2.png" alt="" />
-        </div>        
+          <img src="/images/detail/jin-jin-jin/jin-2.webp" alt="" loading="lazy" />
+        </div>
       </div>
     </div>
   );

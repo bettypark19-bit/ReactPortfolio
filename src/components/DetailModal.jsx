@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import gsap from 'gsap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
 
-import Wine           from '../pages/detail/Wine';
-import JinJinJin       from '../pages/detail/JinJinJin';
-import GijangCharacter from '../pages/detail/GijangCharacter';
-import CardNews        from '../pages/detail/CardNews';
-import BookCover       from '../pages/detail/BookCover';
-import ShootMyHeart   from '../pages/detail/ShootMyHeart';
-import SwaySeat        from '../pages/detail/SwaySeat';
-import Bird            from '../pages/detail/Bird';
-import IntoTheSea      from '../pages/detail/IntoTheSea';
+const Wine           = lazy(() => import('../pages/detail/Wine'));
+const JinJinJin      = lazy(() => import('../pages/detail/JinJinJin'));
+const GijangCharacter= lazy(() => import('../pages/detail/GijangCharacter'));
+const CardNews       = lazy(() => import('../pages/detail/CardNews'));
+const BookCover      = lazy(() => import('../pages/detail/BookCover'));
+const ShootMyHeart   = lazy(() => import('../pages/detail/ShootMyHeart'));
+const SwaySeat       = lazy(() => import('../pages/detail/SwaySeat'));
+const Bird           = lazy(() => import('../pages/detail/Bird'));
+const IntoTheSea     = lazy(() => import('../pages/detail/IntoTheSea'));
 
 const DETAIL_MAP = {
   'wine':             Wine,
@@ -94,7 +94,11 @@ function DetailModal({ item, onClose }) {
           {isFullscreen && (
             <button className="detail-back-btn" onClick={close}>← 돌아가기</button>
           )}
-          {DetailComponent && <DetailComponent />}
+          {DetailComponent && (
+            <Suspense fallback={<div className="detail-loading">불러오는 중...</div>}>
+              <DetailComponent />
+            </Suspense>
+          )}
         </div>
       </div>
     </div>

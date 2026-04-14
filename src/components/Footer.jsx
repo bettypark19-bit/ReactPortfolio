@@ -1,9 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function Footer() {
   const titleRef    = useRef(null);
@@ -133,10 +131,10 @@ function Footer() {
 
     emailjs
       .sendForm(
-        'service_f1rst',
-        'template_ocx4r5g',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        { publicKey: 'd5TIuzBMyKR0Aao4y' }
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
       )
       .then(() => {
         alert('메시지가 전송되었습니다!');

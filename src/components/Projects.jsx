@@ -3,8 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projectImgs } from "../data/images";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const projects = [
   {
     id: 1,
@@ -74,31 +72,30 @@ function ProjectCards() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const cards = gsap.utils.toArray(".project-card");
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".project-card");
 
-    cards.forEach((card, index) => {
-      // 마지막 카드는 작아질 필요가 없으므로 제외하거나 조건부 적용
-      if (index === cards.length - 1) return;
+      cards.forEach((card, index) => {
+        // 마지막 카드는 작아질 필요가 없으므로 제외하거나 조건부 적용
+        if (index === cards.length - 1) return;
 
-      const nextCard = cards[index + 1];
+        const nextCard = cards[index + 1];
 
-      gsap.to(card, {
-        scrollTrigger: {
-          trigger: nextCard,
-          start: "top 80%", // 다음 카드가 나타나기 시작할 때
-          end: "top 100px", // 다음 카드가 현재 카드 위치에 도달할 때
-          scrub: true,
-          // markers: true, // 디버깅용
-        },
-        scale: 0.9,
-        opacity: 0.5,
-        ease: "none",
+        gsap.to(card, {
+          scrollTrigger: {
+            trigger: nextCard,
+            start: "top 80%", // 다음 카드가 나타나기 시작할 때
+            end: "top 100px", // 다음 카드가 현재 카드 위치에 도달할 때
+            scrub: true,
+          },
+          scale: 0.9,
+          opacity: 0.5,
+          ease: "none",
+        });
       });
     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   return (

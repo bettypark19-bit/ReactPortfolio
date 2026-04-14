@@ -10,14 +10,14 @@ function CardNews() {
   // 이미지 경로 설정 (import.meta.env.BASE_URL 대응)
   const base = import.meta.env.BASE_URL || "/";
   const images = [
-    `${base}images/detail/card-news//full/1.png`,
-    `${base}images/detail/card-news/full/2.png`,
-    `${base}images/detail/card-news/full/3.png`,
-    `${base}images/detail/card-news/full/4.png`,
-    `${base}images/detail/card-news/full/5.png`,
-    `${base}images/detail/card-news/full/6.png`,
-    `${base}images/detail/card-news/full/7.png`,
-    `${base}images/detail/card-news/full/8.png`,
+    `${base}images/detail/card-news/full/1.webp`,
+    `${base}images/detail/card-news/full/2.webp`,
+    `${base}images/detail/card-news/full/3.webp`,
+    `${base}images/detail/card-news/full/4.webp`,
+    `${base}images/detail/card-news/full/5.webp`,
+    `${base}images/detail/card-news/full/6.webp`,
+    `${base}images/detail/card-news/full/7.webp`,
+    `${base}images/detail/card-news/full/8.webp`,
   ];
 
   const handlePointerDown = (e) => {
@@ -96,10 +96,10 @@ function CardNews() {
       {/* 기존 세로 이미지 구조 유지 */}
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="../../public/images/detail/card-news/1.png" alt="" />
-        </div> 
+          <img src="/images/detail/card-news/1.webp" alt="" loading="lazy" />
+        </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/card-news/2.png" alt="" />
+          <img src="/images/detail/card-news/2.webp" alt="" loading="lazy" />
         </div>
       </div>
 

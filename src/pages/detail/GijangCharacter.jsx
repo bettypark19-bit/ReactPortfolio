@@ -25,28 +25,28 @@ function GijangCharacter() {
 
       <div className="detail-gallery">
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/1.png" alt="" />
+          <img src="/images/detail/gijang-character/1.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/2.png" alt="" />
+          <img src="/images/detail/gijang-character/2.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/3.png" alt="" />
+          <img src="/images/detail/gijang-character/3.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/4.png" alt="" />
+          <img src="/images/detail/gijang-character/4.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/5.png" alt="" />
+          <img src="/images/detail/gijang-character/5.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/6.jpg" alt="" />
+          <img src="/images/detail/gijang-character/6.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/7.png" alt="" />
+          <img src="/images/detail/gijang-character/7.webp" alt="" loading="lazy" />
         </div>
         <div className="detail-image-box">
-          <img src="../../public/images/detail/gijang-character/8.png" alt="" />
+          <img src="/images/detail/gijang-character/8.webp" alt="" loading="lazy" />
         </div>
       </div>
     </div>

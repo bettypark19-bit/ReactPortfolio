@@ -6,6 +6,9 @@ function CustomCursor() {
   const followerRef = useRef(null);
 
   useEffect(() => {
+    // 터치 디바이스에서는 커서 로직 실행 안 함
+    if (window.matchMedia('(hover: none)').matches) return;
+
     const dot = dotRef.current;
     const follower = followerRef.current;
 

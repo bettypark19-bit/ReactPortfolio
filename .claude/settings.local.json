@@ -24,7 +24,26 @@
       "Bash(mv public/images/detail/book2 public/images/detail/book-cover)",
       "Bash(mv public/images/detail/card public/images/detail/card-news)",
       "Bash(mv public/images/detail/character public/images/detail/gijang-character)",
-      "Bash(mv public/images/detail/jin public/images/detail/jin-jin-jin)"
+      "Bash(mv public/images/detail/jin public/images/detail/jin-jin-jin)",
+      "Bash(find src:*)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(sort -k2)",
+      "Bash(find public:*)",
+      "Bash(find dist:*)",
+      "Bash(find public/images -type f -exec file {} \\\\;)",
+      "Bash(awk '{sum += $1} END {print \"Total bytes:\", sum; printf \"Total MB: %.1f\\\\n\", sum / 1024 / 1024}')",
+      "Bash(find public/images -type f -exec ls -lh {} \\\\;)",
+      "Bash(ls -lh dist/assets/*.js)",
+      "Bash(xargs ls:*)",
+      "Bash(sort -k5 -rn)",
+      "Bash(where cwebp:*)",
+      "Bash(where ffmpeg:*)",
+      "Bash(where magick:*)",
+      "Bash(xargs rm:*)",
+      "Bash(sed -n '155,165p' src/styles/portfolio.css)",
+      "Bash(sed -n '248,256p' src/styles/portfolio.css)",
+      "Bash(sed -n '555,563p' src/styles/portfolio.css)",
+      "Bash(sed -n '782,790p' src/styles/portfolio.css)"
     ]
   }
 }

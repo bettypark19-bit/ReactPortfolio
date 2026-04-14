@@ -7,7 +7,7 @@ const projects = [
   {
     id: 1,
     title: "VODA OTT 플랫폼 & 영상",
-    tags: ["Figma", "Stitch", "Claude cli", "React", "Python"],
+    tags: ["Figma", "Stitch", "Claude cli", "React", "Python", "Github"],
     period: "2026.03.24 - 2026.04.03 (주말 제외 총 9일)",
     contribution: "40% (팀장, 기획, 디자인, 코딩)",
     media: "Web",

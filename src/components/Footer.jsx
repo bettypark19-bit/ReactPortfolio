@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,6 +10,8 @@ function Footer() {
   const wrapperRef  = useRef(null);
   const dotRef      = useRef(null);
   const dotInnerRef = useRef(null);
+  const formRef     = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const titleEl    = titleRef.current;
@@ -124,6 +127,29 @@ function Footer() {
     };
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        'service_f1rst',
+        'template_ocx4r5g',
+        formRef.current,
+        { publicKey: 'd5TIuzBMyKR0Aao4y' }
+      )
+      .then(() => {
+        alert('메시지가 전송되었습니다!');
+        formRef.current.reset();
+      })
+      .catch((error) => {
+        alert('전송 실패: ' + error.text);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <footer className="footer" id="contact">
       <div className="footer-cta-card">
@@ -164,24 +190,26 @@ function Footer() {
 
           {/* 오른쪽: 이메일 폼 */}
           <div className="footer-form-side">
-            <form className="footer-email-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="footer-email-form" ref={formRef} onSubmit={handleSubmit}>
               <div className="footer-form-group">
                 <label htmlFor="name" className="footer-form-label">담당자명</label>
-                <input type="text" id="name" className="footer-form-input" placeholder="성함을 입력해주세요" required />
+                <input type="text" id="name" name="user_name" className="footer-form-input" placeholder="성함을 입력해주세요" required />
               </div>
               <div className="footer-form-group">
                 <label htmlFor="email" className="footer-form-label">회사 메일</label>
-                <input type="email" id="email" className="footer-form-input" placeholder="email@company.com" required />
+                <input type="email" id="email" name="user_email" className="footer-form-input" placeholder="email@company.com" required />
               </div>
               <div className="footer-form-group">
                 <label htmlFor="subject" className="footer-form-label">제목</label>
-                <input type="text" id="subject" className="footer-form-input" placeholder="문의 제목을 입력해주세요" required />
+                <input type="text" id="subject" name="user_subject" className="footer-form-input" placeholder="문의 제목을 입력해주세요" required />
               </div>
               <div className="footer-form-group">
                 <label htmlFor="message" className="footer-form-label">내용</label>
-                <textarea id="message" className="footer-form-textarea" placeholder="프로젝트에 대해 설명해주세요" rows="4" required></textarea>
+                <textarea id="message" name="message" className="footer-form-textarea" placeholder="프로젝트에 대해 설명해주세요" rows="4" required></textarea>
               </div>
-              <button type="submit" className="footer-submit-btn">전송하기</button>
+              <button type="submit" className="footer-submit-btn" disabled={loading}>
+                {loading ? '전송 중...' : '전송하기'}
+              </button>
             </form>
           </div>
         </div>

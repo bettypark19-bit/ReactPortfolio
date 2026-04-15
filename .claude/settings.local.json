@@ -44,7 +44,13 @@
       "Bash(sed -n '248,256p' src/styles/portfolio.css)",
       "Bash(sed -n '555,563p' src/styles/portfolio.css)",
       "Bash(sed -n '782,790p' src/styles/portfolio.css)",
-      "Bash(ls \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\soobin\\\\portfolio\\\\GEMINI\"*)"
+      "Bash(ls \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\soobin\\\\portfolio\\\\GEMINI\"*)",
+      "Bash(find public/images/detail/bird public/images/detail/into-the-sea public/images/detail/sway-seat -type f \\\\\\( -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" \\\\\\) -delete)",
+      "Bash(npm list *)",
+      "Bash(winget install *)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams public/images/detail/into-the-sea/vid.mp4)",
+      "Bash(/c/Users/Administrator/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg -i public/images/detail/into-the-sea/vid.mp4 -vf scale=1920:1080:flags=lanczos -c:v libx264 -crf 24 -preset slow -c:a aac -b:a 128k -movflags +faststart public/images/detail/into-the-sea/vid_compressed.mp4)",
+      "Bash(ls *)"
     ]
   }
 }

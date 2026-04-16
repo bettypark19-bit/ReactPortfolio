@@ -618,6 +618,7 @@ body {
 .project-card-text {
   flex: 1;
   max-width: 600px;
+  min-width: 0; /* 버튼 콘텐츠 크기로 인한 기본 min-width 무효화 → 이미지 overflow 방지 */
 }
 
 .project-card-number {
@@ -713,13 +714,13 @@ body {
   display: flex;
   justify-content: center;
   gap: 12px;
-  padding: 0 20px;
+  padding: 0;
   z-index: 10;
 }
 
 /* 개별 버튼 스타일 - 투명도가 흐릿한 백색(Glassmorphism) */
 .project-link-btn {
-  padding: 12px 24px;
+  padding: 12px 20px;
   background: var(--color-blue-300); 
   border-radius: 100px;
   color: var(--color-white);
@@ -1466,6 +1467,10 @@ a, button, .link {
     flex-shrink: 0;
     align-self: stretch;
     height: auto;
+  }
+
+  .project-card-links {
+    margin-bottom: 30px;
   }
 
   .footer               { padding: 60px 48px 100px; }

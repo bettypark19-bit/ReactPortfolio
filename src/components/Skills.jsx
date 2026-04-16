@@ -91,25 +91,22 @@ function Skills() {
           <div className="cert-name">{cert.name}</div>
           {cert.id === 2 ? (
             <>
-              {skillData.map((row, rowIdx) => (
-                <div className="skills-row" key={rowIdx}>
-                  {row.map((sd, colIdx) => {
-                    const i = rowIdx * row.length + colIdx;
-                    return (
-                      <div className="skillbar-inner" key={sd.id}>
-                        <svg viewBox="10 10 30 30">
-                          <g transform="translate(25 25) rotate(-90)">
-                            <circle r="10" />
-                            <path ref={(el) => (pathRefs.current[i] = el)} />
-                          </g>
-                          <text ref={(el) => (textRefs.current[i] = el)} x="25" y="26">0%</text>
-                        </svg>
-                        <p>{sd.label}</p>
-                      </div>
-                    );
-                  })}
+              <div className="skillbars-wrap">
+                <div className="skills-row">
+                  {flatSkills.map((sd, i) => (
+                    <div className="skillbar-inner" key={sd.id}>
+                      <svg viewBox="10 10 30 30">
+                        <g transform="translate(25 25) rotate(-90)">
+                          <circle r="10" />
+                          <path ref={(el) => (pathRefs.current[i] = el)} />
+                        </g>
+                        <text ref={(el) => (textRefs.current[i] = el)} x="25" y="26">0%</text>
+                      </svg>
+                      <p>{sd.label}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </>
           ) : (
             <>

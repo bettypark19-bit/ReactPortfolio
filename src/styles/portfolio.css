@@ -496,8 +496,17 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 8px;
   padding: 0 96px;
+}
+
+/* skillData 전용 래퍼 — 좌우 여백 추가, 내부 skills-row 패딩 초기화 */
+.skillbars-wrap {
+  padding: 0 300px;
+}
+
+.skillbars-wrap .skills-row {
+  padding: 0;
 }
 
 .skill-pill {
@@ -521,6 +530,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 0 0 calc(25% - 6px); /* 4열 고정, gap(8px) 3개 ÷ 4 = 6px 보정 */
 }
 
 .skillbar-inner svg {
@@ -1473,6 +1483,8 @@ a, button, .link {
     margin-bottom: 30px;
   }
 
+  .skillbars-wrap       { padding: 0 160px; }
+
   .footer               { padding: 60px 48px 100px; }
   .other-card-track     { padding: 20px 0px 0px 48px; }
 
@@ -1507,6 +1519,8 @@ a, button, .link {
   .skills           { border-radius: 0 0 48px 48px; }
   .skills-title     { font-size: 48px; }
   .skills-row       { padding: 0 24px; }
+  .skillbars-wrap   { padding: 0 80px; }
+  .skillbar-inner   { flex: 0 0 calc(50% - 8px); } /* 4열 → 2열, gap: 16px, 1개 간격 ÷ 2 = 8px */
   .skill-pill       { font-size: 16px; padding: 10px 14px; }
   .projects-header  { padding: 0 24px; }
   .projects-title   { font-size: 48px; }
@@ -1691,6 +1705,7 @@ a, button, .link {
     padding: 0 16px;
     gap: 12px;
   }
+  .skillbars-wrap   { padding: 0 24px; }
   .skill-pill {
     font-size: 13px;
     padding: 8px 12px;
@@ -1726,6 +1741,7 @@ a, button, .link {
     border-radius: 28px;
     min-height: unset; /* 세로 스택 시 과도한 높이 해제 */
     top: 80px;         /* sticky 고정 위치 소폭 조정 */
+    gap: 20px;
   }
   .project-card-number {
     font-size: 40px;
@@ -1753,6 +1769,9 @@ a, button, .link {
     font-size: 12px;
     padding: 4px 12px;
   }
+  .project-card-text{
+    margin-top: 10px;
+  }
   .project-card-desc {
     font-size: 14px;
     line-height: 1.5;
@@ -1768,6 +1787,7 @@ a, button, .link {
     gap: 8px;
     padding: 0 8px;
     flex-wrap: wrap;
+    margin-bottom: 0px;
   }
   .project-link-btn {
     font-size: 12px;

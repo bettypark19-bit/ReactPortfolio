@@ -4,19 +4,52 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 import { personPhoto } from '../data/images';
 
-// 상단 좌우 border-radius(≈96px) 포함한 경로
-const down   = 'M0,150 Q0,0 150,0 C150,0 569,80 1139,80 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z';   // 약한 아래 파임
-const up     = 'M0,150 Q0,0 150,0 C150,0 569,-100 1139,-100 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z'; // 위쪽 반등
-const center = 'M0,150 Q0,0 150,0 C150,0 569,0 1139,0 S2128,0 2128,0 Q2278,0 2278,150 V683 H0 Z';
+// cx: SVG X축 코너 길이, cy: SVG Y축 코너 길이
+// CSS border-radius 96px을 뷰포트 크기에 맞게 SVG 좌표로 환산한 값을 받음
+function makePaths(cx, cy) {
+  const rx = 2278 - cx; // 우측 코너 시작 X
+  return {
+    center: `M0,${cy} Q0,0 ${cx},0 C${cx},0 569,0 1139,0 S${rx},0 ${rx},0 Q2278,0 2278,${cy} V683 H0 Z`,
+    down:   `M0,${cy} Q0,0 ${cx},0 C${cx},0 569,80 1139,80 S${rx},0 ${rx},0 Q2278,0 2278,${cy} V683 H0 Z`,
+    up:     `M0,${cy} Q0,0 ${cx},0 C${cx},0 569,-100 1139,-100 S${rx},0 ${rx},0 Q2278,0 2278,${cy} V683 H0 Z`,
+  };
+}
 
 function About() {
-  const sectionRef = useRef(null);
-  const pathRef    = useRef(null);
+  const sectionRef     = useRef(null);
+  const pathRef        = useRef(null);
+  const pathsRef       = useRef(makePaths(150, 150)); // 초기값: 기존 고정값으로 시작
+  const isAnimatingRef = useRef(false);               // 애니메이션 진행 여부 추적
+
+  // 섹션 크기로부터 cx/cy를 계산해 pathsRef를 갱신하고 현재 path를 즉시 반영
+  function updatePaths() {
+    const section = sectionRef.current;
+    const path    = pathRef.current;
+    if (!section || !path) return;
+
+    const W  = section.offsetWidth;
+    const H  = section.offsetHeight;
+    const cx = (96 * 2278) / W;  // CSS 96px → SVG X 좌표
+    const cy = (96 * 683)  / H;  // CSS 96px → SVG Y 좌표
+    pathsRef.current = makePaths(cx, cy);
+
+    // 애니메이션 진행 중에는 건너뜀 — 다음 onEnter 시 최신 path 자동 반영
+    if (!isAnimatingRef.current) {
+      path.setAttribute('d', pathsRef.current.center);
+    }
+  }
 
   useEffect(() => {
     const section = sectionRef.current;
     const path    = pathRef.current;
     if (!section || !path) return;
+
+    // 마운트 시 첫 계산
+    updatePaths();
+
+    // 리사이즈 감지
+    const observer = new ResizeObserver(() => updatePaths());
+    observer.observe(section);
 
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
@@ -26,7 +59,12 @@ function About() {
         onEnter: (self) => {
           const velocity  = Math.abs(self.getVelocity());
           const variation = velocity / 5000;
-          const tl = gsap.timeline({ overwrite: true });
+          const { down, up, center } = pathsRef.current; // 항상 최신 path 사용
+          const tl = gsap.timeline({
+            overwrite: true,
+            onStart:    () => { isAnimatingRef.current = true;  },
+            onComplete: () => { isAnimatingRef.current = false; },
+          });
 
           // 평평 → 약한 아래 파임 → 위쪽 반등 → 탄성 정착
           tl.to(path, { morphSVG: down,   duration: 0.2, ease: 'power2.in'   })
@@ -36,7 +74,10 @@ function About() {
       });
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      observer.disconnect();
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -62,7 +103,7 @@ function About() {
           pointerEvents: 'none',
         }}
       >
-        <path ref={pathRef} fill="#ffffff" d={center} />
+        <path ref={pathRef} fill="#ffffff" d={pathsRef.current.center} />
       </svg>
 
       <div className="about-inner" style={{ position: 'relative', zIndex: 1 }}>

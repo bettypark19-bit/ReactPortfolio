@@ -234,9 +234,9 @@ body {
 }
 
 .hero-person-photo {
-  height: 840px; /* 크기 조정: 너무 크지 않게 */
+  height: 840px;
   width: auto;
-  object-fit: contain;
+  max-width: none; /* Tailwind preflight의 max-width: 100% 무력화 */
   display: block;
   margin-top: 60px;
 }
@@ -383,6 +383,10 @@ body {
   gap: 60px;
 }
 
+.about-info-column {
+  min-width: 0; /* grid item 기본 min-width: auto 해제 → 1fr 이하로 수축 가능 */
+}
+
 .about-column-title {
   font-family: var(--font-accent);
   font-weight: normal;
@@ -404,6 +408,8 @@ body {
   font-size: 18px;
   display: flex;
   align-items: center;
+  overflow-wrap: break-word; /* 이메일 등 긴 단어 줄바꿈 허용 */
+  word-break: break-all;
 }
 
 .about-info-list li span {
@@ -606,7 +612,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 100px; /* 간격 조정 */
-  padding: 0 96px;
+  padding: 0 clamp(48px, 4vw, 100px); /* 1200px: 48px → 뷰포트 넓어질수록 비례 증가 */
   /* GSAP ScrollTrigger를 위해 고정 높이와 내부 스크롤 제거 */
 }
 
@@ -616,6 +622,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 40px; /* 텍스트↔이미지 최소 간격 보장 */
   background: var(--color-white);
   border-radius: 64px;
   padding: 40px;
@@ -1491,7 +1498,8 @@ a, button, .link {
   .about-hero           { gap: 40px; }
   .about-hero-text      { font-size: 36px; }
   .about-highlight      { font-size: 44px; }
-  .about-info-grid      { gap: 40px; }
+  .about-info-grid      { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+  .about-column-title   { font-size: 24px; margin-bottom: 20px; }
 }
 
 @media (max-width: 900px) {
@@ -1500,7 +1508,7 @@ a, button, .link {
   .navbar-links     { display: none; }
   .hero-marquee-track span,
   .hero-marquee-track-reverse span { font-size: 100px; }
-  .hero-person-photo { height: 600px;}
+  .hero-person-photo { height: 800px;}
   .hero-text-content { padding: 0 24px; }
   
   /* About Responsive */
@@ -1589,11 +1597,14 @@ a, button, .link {
     padding-top: 30px;
   }
   .hero-title {
-    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
   }
   .hero-title-thin,
   .hero-title-bold {
-    font-size: 36px;
+    font-size: 100px;
+    justify-content: center;
   }
   .hero-title-thin {
     letter-spacing: -2px;
@@ -1601,12 +1612,12 @@ a, button, .link {
   .hero-title-bold {
     letter-spacing: -2px;
   }
-  /* 이미지 영역 수직 위치 소폭 조정 */
+  /* 인물 사진 하단이 .about 상단에 닿도록 아래로 이동 */
   .hero-main-area {
-    top: 54%;
+    top: 65%;
   }
   .hero-person-photo {
-    height: 360px;
+    height: 600px;
     margin-top: 10px;
   }
   /* 말풍선: 패딩·폰트 축소 + 화면 밖 넘침 방지 */
@@ -1640,6 +1651,10 @@ a, button, .link {
   .about {
     padding: 40px 16px;
     border-radius: 32px 32px 0 0;
+  }
+  /* 인물 사진 하단이 About 상단과 겹치도록 콘텐츠 시작점을 아래로 내림 */
+  .about-inner {
+    padding-top: 20px;
   }
   .about-title {
     font-size: 28px;

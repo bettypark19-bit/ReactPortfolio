@@ -29,8 +29,10 @@ function About() {
 
     const W  = section.offsetWidth;
     const H  = section.offsetHeight;
-    const cx = (96 * 2278) / W;  // CSS 96px → SVG X 좌표
-    const cy = (96 * 683)  / H;  // CSS 96px → SVG Y 좌표
+    // CSS border-radius 실제 적용값을 읽어 SVG 좌표로 환산 (breakpoint별 값 자동 반영)
+    const br = parseFloat(getComputedStyle(section).borderTopLeftRadius) || 96;
+    const cx = (br * 2278) / W;
+    const cy = (br * 683)  / H;
     pathsRef.current = makePaths(cx, cy);
 
     // 애니메이션 진행 중에는 건너뜀 — 다음 onEnter 시 최신 path 자동 반영

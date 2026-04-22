@@ -1452,12 +1452,12 @@ a.footer-contact-value:hover {
   background-color: rgba(1, 138, 190, 0.2); /* 포인트 컬러 투명도 */
 }
 
-/* 기본 커서 숨기기 (선택 사항, 수빈 님의 취향에 따라 유지 가능) */
+/* 기본 커서 유지 (커스텀 커서 애니메이션과 함께 사용) */
 body {
-  cursor: none;
+  cursor: auto;
 }
 a, button, .link {
-  cursor: none;
+  cursor: pointer;
 }
 
 /* ============================================

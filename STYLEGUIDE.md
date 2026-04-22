@@ -227,7 +227,7 @@ transition: transform 0.2s; /* Footer 버튼 */
 .cursor-follower { width: 20px; height: 20px; background: rgba(1,138,190,0.2); }
 ```
 
-- `body`, `a`, `button`, `.link` 모두 `cursor: none` 적용
+- `body`, `a`, `button`, `.link` 모두 기본 커서 유지 (커스텀 커서 애니메이션 병행)
 - GSAP으로 마우스 좌표 추적, follower는 부드럽게 지연 이동
 
 ---

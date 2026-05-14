@@ -10,9 +10,9 @@ function Hero() {
   const [index, setIndex] = useState(0);
 
   const phrases = [
-    { thin: '분석은', bold: 'TIGHT' },
-    { thin: '디자인', bold: 'FAST' },
-    { thin: '디테일', bold: 'PERFECT' },
+    { thin: '감각은', bold: '공예에서' },
+    { thin: '구조는', bold: '코드에서' },
+    { thin: '속도는', bold: 'AI에서' },
   ];
 
   // 1. 블롭 애니메이션: 배경 전체를 자유롭게 이동
@@ -103,10 +103,10 @@ function Hero() {
       <div className="hero-main-area">
         <div className="hero-image-wrapper">
           <div className="hero-chat-bubble chat-hi">
-            <span className="hero-chat-text">Hi! I'm Soobin!</span>
+            <span className="hero-chat-text">디자이너 박수빈입니다.</span>
           </div>
           <a
-            href="https://drive.google.com/file/d/1vkh8npgRoHG-9nmffMqZOIhAJvtMCxeD/view?usp=sharing"
+            href="https://drive.google.com/file/d/1iiyE3W0HPGLjRljwnXAzX7jCBQ2JhY_x/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="hero-chat-bubble chat-resume"

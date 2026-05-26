@@ -116,6 +116,7 @@ function About() {
               src={personPhoto[1]}
               alt="박수빈"
               className="about-avatar-img"
+              loading="lazy"
             />
           </div>
           <h1 className="about-hero-text">

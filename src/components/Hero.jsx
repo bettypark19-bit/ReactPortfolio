@@ -106,7 +106,7 @@ function Hero() {
             <span className="hero-chat-text">디자이너 박수빈입니다.</span>
           </div>
           <a
-            href="https://drive.google.com/file/d/1iiyE3W0HPGLjRljwnXAzX7jCBQ2JhY_x/view?usp=sharing"
+            href="https://drive.google.com/file/d/13Px7Iz4MFDcQknAojmGSAsfZLFzsMYxv/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="hero-chat-bubble chat-resume"
